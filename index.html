@@ -440,9 +440,28 @@
 
       // 3. Gyroscope (Mobile)
       let gyroActive = false;
+      let baselineBeta = null;
+      let baselineGamma = null;
+
       function handleOrientation(e) {
         if (e.beta === null || e.gamma === null) return;
         gyroActive = true; // Signals that we are receiving valid gyro data
+
+        // Lock in the baseline initial holding position
+        if (baselineBeta === null) {
+          baselineBeta = e.beta;
+          baselineGamma = e.gamma;
+        }
+
+        // Compute the delta deviation from the resting spot
+        let deltaBeta = e.beta - baselineBeta;
+        let deltaGamma = e.gamma - baselineGamma;
+
+        // Normalize boundary wraps to prevent snapping
+        if (deltaBeta > 180) deltaBeta -= 360;
+        if (deltaBeta < -180) deltaBeta += 360;
+        if (deltaGamma > 180) deltaGamma -= 360;
+        if (deltaGamma < -180) deltaGamma += 360;
 
         const screenAngle = (
           (typeof screen !== 'undefined' && screen.orientation?.angle) ??
@@ -453,25 +472,26 @@
         let rawX, rawY;
         switch (Math.round(screenAngle / 90) * 90) {
           case 90:
-            rawX = e.beta - 90;
-            rawY = -e.gamma;
+            rawX = deltaBeta;
+            rawY = -deltaGamma;
             break;
           case -90:
           case 270:
-            rawX = -(e.beta - 90);
-            rawY = e.gamma;
+            rawX = -deltaBeta;
+            rawY = deltaGamma;
             break;
           case 180:
-            rawX = -e.gamma;
-            rawY = -(e.beta - 90);
+            rawX = -deltaGamma;
+            rawY = -deltaBeta;
             break;
           default:
-            rawX = e.gamma;
-            rawY = e.beta - 90;
+            rawX = deltaGamma;
+            rawY = deltaBeta;
             break;
         }
 
-        const TILT_RANGE = 28; // Lowered from 40 for higher sensitivity to micro-movements
+        // Hyper-sensitive tilt range: Only 12 degrees of movement required to reach edges!
+        const TILT_RANGE = 12;
         const clampedX = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawX));
         const clampedY = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawY));
 
@@ -506,8 +526,8 @@
 
       // Animation loop
       function animateTextPressure() {
-        // Gyro utilizes heavy damping to achieve a liquid-smooth float effect devoid of sensor jitter
-        const damping = gyroActive ? 35 : 12;
+        // Heavy liquid damping: absorbs sensor jitter and converts it to smooth inertia
+        const damping = gyroActive ? 40 : 12;
         mouse.x += (cursor.x - mouse.x) / damping;
         mouse.y += (cursor.y - mouse.y) / damping;
 
