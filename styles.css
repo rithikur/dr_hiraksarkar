@@ -218,17 +218,7 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
-/* ===== REVEAL ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s var(--transition), transform .7s var(--transition);
-}
 
-.reveal.vis {
-  opacity: 1;
-  transform: translateY(0)
-}
 
 /* ===== ABOUT — Two-column split with accent border ===== */
 #about {
@@ -589,10 +579,10 @@ section {
 .edu-card::before {
   content: attr(data-year);
   position: absolute;
-  bottom: -0.05em;
-  right: -0.02em;
+  bottom: 0.1em;
+  right: 0.1em;
   font-family: 'Bebas Neue', var(--sans);
-  font-size: 8rem;
+  font-size: 2.5rem;
   line-height: 0.8;
   font-weight: 900;
   color: var(--accent);
@@ -602,15 +592,16 @@ section {
 }
 
 .edu-card:hover {
-  border-color: var(--accent);
-  background: var(--bg-light);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* border-color: var(--accent); */
+  /* background: var(--bg-light); */
+  /* transform: translateY(-4px); */
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); */
 }
 
 .edu-card:hover::before {
-  opacity: 0.15;
-  transform: scale(1.05) rotate(-2deg);
+  opacity: 0.25;
+  /* opacity: 0.15; */
+  /* transform: scale(1.05) rotate(-2deg); */
 }
 
 .edu-degree {
@@ -642,51 +633,35 @@ section {
   flex-grow: 1;
 }
 
-/* ===== HONORS — Enumerated Editorial List ===== */
-.honors-list {
+/* ===== HONORS — Compact Badges ===== */
+.honors-badges {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
-.honor-row {
+.honor-badge {
   display: flex;
   align-items: center;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--rule);
-  transition: all .3s var(--transition);
-}
-
-.honor-row:first-child {
-  border-top: 1px solid var(--rule);
-}
-
-.honor-row:hover {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  background: var(--bg-light);
-  border-bottom-color: transparent;
-}
-
-.honor-num {
-  font-family: var(--mono);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--accent);
-  width: 70px;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.honor-text {
-  font-size: 1.15rem;
-  color: var(--fg);
+  gap: 0.4rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  line-height: 1.4;
-  transition: color .3s;
+  color: var(--fg);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-light);
+  padding: 0.4rem 0.8rem;
+  transition: all .25s var(--transition);
 }
 
-.honor-row:hover .honor-text {
+.honor-badge:hover {
+  background: var(--bg-light);
+  border-color: var(--accent);
+}
+
+.honor-icon {
   color: var(--accent);
+  font-size: 0.8rem;
+  line-height: 1;
 }
 
 /* ===== TEACHING — Accordion-style with expand indicator ===== */
@@ -724,10 +699,10 @@ section {
   border-bottom: none
 }
 
-.teach-row:hover {
+/* .teach-row:hover {
   background: var(--accent-glow);
   padding-left: 2rem;
-}
+} */
 
 .teach-course {
   font-size: 0.88rem;
@@ -811,45 +786,75 @@ section {
 }
 
 /* ===== FOOTER ===== */
-footer {
-  padding: 3rem 0 2.5rem;
-  margin-top: 2rem;
-  background: var(--bg-card);
-  border-top: 3px solid var(--accent);
+.site-footer {
+  margin-top: 6rem;
+  background: var(--bg);
 }
 
-.footer-copy {
-  font-family: var(--mono);
-  font-size: 0.68rem;
+.footer-title {
+  font-family: var(--sans);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.footer-contact {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.footer-contact a {
   color: var(--fg-dim);
-  letter-spacing: 0.03em;
-  margin-bottom: 0.8rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.3s var(--transition);
+}
+
+.footer-contact a:hover {
+  color: var(--accent);
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
+  gap: 0.8rem;
+  margin-bottom: 4rem;
 }
 
 .footer-links a {
-  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg);
   text-decoration: none;
-  padding: 0.3rem 0.6rem;
-  border: 1px solid var(--rule);
-  transition: all .2s var(--transition);
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--fg);
+  transition: all .25s var(--transition);
 }
 
 .footer-links a:hover {
   color: var(--bg) !important;
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--fg);
 }
 
-.footer-sep {
-  display: none;
+.footer-bottom {
+  background: #C4C4C4;
+  /* Using a solid light grey closely matching the original image design */
+  padding: 1.2rem 0;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-copy {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  /* Dark almost-black for contrast against the grey */
 }
 
 /* ===== AURORA EASTER EGG ===== */
@@ -902,70 +907,39 @@ footer {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ===== STAGGER ANIMATIONS ===== */
-.reveal.vis .pub-entry,
-.reveal.vis .proj-card,
-.reveal.vis .timeline-item,
-.reveal.vis .edu-block,
-.reveal.vis .honor-pill,
-.reveal.vis .teach-row {
-  animation: stagger-in 0.5s var(--transition) both;
-}
-
-.reveal.vis :nth-child(1) {
-  animation-delay: 0s
-}
-
-.reveal.vis :nth-child(2) {
-  animation-delay: 0.06s
-}
-
-.reveal.vis :nth-child(3) {
-  animation-delay: 0.12s
-}
-
-.reveal.vis :nth-child(4) {
-  animation-delay: 0.18s
-}
-
-.reveal.vis :nth-child(5) {
-  animation-delay: 0.24s
-}
-
-.reveal.vis :nth-child(6) {
-  animation-delay: 0.30s
-}
-
-.reveal.vis :nth-child(7) {
-  animation-delay: 0.36s
-}
-
-.reveal.vis :nth-child(8) {
-  animation-delay: 0.42s
-}
-
-@keyframes stagger-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Removed Stagger animations per user request */
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:600px) {
+@media(max-width:768px) {
+  .section-label {
+    font-size: 2rem;
+  }
+
+  /* .pub-entry {
+    flex-direction: column;
+    align-items: stretch;
+  } */
+
+  /* .pub-year {
+    width: 100%;
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    justify-content: flex-start;
+  } */
+
+  .pub-body {
+    padding: 1rem;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
 
   .exp-accordion {
     flex-direction: column;
-    height: 65vh;
-    /* Enough height for vertical expansion */
+    height: 60vh;
   }
 
   .panel-year-side {
@@ -973,17 +947,25 @@ footer {
     left: 1rem;
     writing-mode: horizontal-tb;
     transform: none;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .panel-content {
+    padding: 1.2rem;
+    width: 100%;
+    white-space: normal;
+  }
+
+  .edu-card::before {
+    font-size: 5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 
   .teach-row {
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.3rem;
     align-items: flex-start;
-  }
-
-  .kv-grid {
-    flex-direction: column;
   }
 
   .text-pressure-title {
