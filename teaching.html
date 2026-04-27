@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching — Dr. Hirak Sarkar</title>
+<meta name="description" content="Complete teaching portfolio of Dr. Hirak Sarkar across KPRIET, Techno India University, and BrightChamps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="header">
+  <a href="index.html" class="back-link">← Back</a>
+  <div class="page-title reveal">Teaching</div>
+  <div class="page-subtitle reveal">8+ years across 3 institutions — 13 courses at UG and PG level</div>
+</header>
+
+<section class="reveal">
+  <div class="teach-group">
+    <div class="teach-org">KPR Institute of Engineering and Technology · 2025–Present</div>
+    <div class="teach-row"><span class="teach-course">Machine Vision and Image Processing</span><span class="teach-level">B.E. IV · Theory</span></div>
+    <div class="teach-row"><span class="teach-course">Electric and Hybrid Vehicle</span><span class="teach-level">B.E. III · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Microcontroller and Embedded Systems</span><span class="teach-level">B.E. II · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Electronic Devices and Digital Circuits</span><span class="teach-level">B.E. II · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Sensors and Signal Processing</span><span class="teach-level">B.E. II · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Electrical and Electronics for Mechatronics</span><span class="teach-level">B.E. I · Theory &amp; Project</span></div>
+  </div>
+
+  <div class="teach-group">
+    <div class="teach-org">Techno India University · 2017–2023</div>
+    <div class="teach-row"><span class="teach-course">Advanced DSP</span><span class="teach-level">M.Tech I · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Satellite Communication</span><span class="teach-level">B.Tech IV · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Analog Communication</span><span class="teach-level">B.Tech III · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Circuit Theory</span><span class="teach-level">B.Tech II · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Basic Electronics</span><span class="teach-level">B.Tech I · Theory &amp; Lab</span></div>
+    <div class="teach-row"><span class="teach-course">Communication Engineering</span><span class="teach-level">Diploma III · Theory &amp; Lab</span></div>
+  </div>
+
+  <div class="teach-group">
+    <div class="teach-org">BrightChamps · 2025</div>
+    <div class="teach-row"><span class="teach-course">Robotics &amp; AI</span><span class="teach-level">International · USA &amp; UK</span></div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-copy">© Dr. Hirak Sarkar 2025 · Kolkata, India</div>
+    <div class="footer-links">
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      <span class="footer-sep">/</span>
+      <a href="https://www.researchgate.net" target="_blank" rel="noopener">ResearchGate</a>
+      <span class="footer-sep">/</span>
+      <a href="https://orcid.org/0000-0002-4444-2818" target="_blank" rel="noopener">ORCID</a>
+      <span class="footer-sep">/</span>
+      <a href="mailto:dr.hiraksarkar@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

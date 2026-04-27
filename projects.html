@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Dr. Hirak Sarkar</title>
+<meta name="description" content="Complete list of robotics, AI, embedded systems, and mechatronics projects by Dr. Hirak Sarkar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="header">
+  <a href="index.html" class="back-link">← Back</a>
+  <div class="page-title reveal">Projects</div>
+  <div class="page-subtitle reveal">15 projects across robotics, AI, embedded systems, and mechatronics</div>
+</header>
+
+<section class="reveal">
+  <div class="proj-entry">
+    <div class="proj-name">Fire Monitoring UAV</div>
+    <div class="proj-desc">Autonomous drone for real-time forest fire detection using night-vision and computer vision</div>
+    <div class="proj-stack">Drone + Night-vision + Python</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Autonomous Robotic Arm</div>
+    <div class="proj-desc">Multi-DOF robotic manipulator with wireless control and automated pick-and-place</div>
+    <div class="proj-stack">Servo + Arduino + ESP32</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Radar Simulation System</div>
+    <div class="proj-desc">Ultrasonic-based radar simulator with real-time distance mapping and sweep display</div>
+    <div class="proj-stack">Ultrasonic + Servo + Arduino</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Smart Auto Cleaner Bot</div>
+    <div class="proj-desc">Floor-cleaning robot with obstacle avoidance and systematic area-coverage</div>
+    <div class="proj-stack">Motors + Battery + MCU</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Machine Vision Suite</div>
+    <div class="proj-desc">Object detection, tracking, and image classification pipelines</div>
+    <div class="proj-stack">Webcam + OpenCV + Python</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">AI Chatbot</div>
+    <div class="proj-desc">NLP chatbot with contextual understanding and multi-turn conversation</div>
+    <div class="proj-stack">Python + NLP</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Solar Powered Bot</div>
+    <div class="proj-desc">Energy-autonomous robot powered entirely by solar panels</div>
+    <div class="proj-stack">Solar Panel + Motor Driver + Arduino</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Mechatronics Robot Collection</div>
+    <div class="proj-desc">Portfolio of 20+ mechatronics robots for education and industrial prototyping</div>
+    <div class="proj-stack">20 units</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">3D Design &amp; Printing Pipeline</div>
+    <div class="proj-desc">End-to-end CAD and additive manufacturing for rapid prototyping</div>
+    <div class="proj-stack">TinkerCAD + 3D Printer + PLA/ABS</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Raspberry Pi Projects</div>
+    <div class="proj-desc">Embedded computing — home automation, sensor networks, edge AI</div>
+    <div class="proj-stack">Raspberry Pi</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Obstacle Avoidance Robot</div>
+    <div class="proj-desc">Autonomous navigation with ultrasonic sensors and path planning</div>
+    <div class="proj-stack">Ultrasonic + Arduino</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Line Following Robot</div>
+    <div class="proj-desc">Precision line-tracking with PID control for smooth trajectory</div>
+    <div class="proj-stack">IR Sensors + Arduino</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Smart Dustbin</div>
+    <div class="proj-desc">Automated waste bin with proximity-triggered lid and fill-level sensing</div>
+    <div class="proj-stack">Ultrasonic + Servo + Arduino</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Traffic Light Controller</div>
+    <div class="proj-desc">Programmable traffic signal system with timing logic and pedestrian mode</div>
+    <div class="proj-stack">LEDs + Arduino + Relay</div>
+  </div>
+  <div class="proj-entry">
+    <div class="proj-name">Scratch Programming Environment</div>
+    <div class="proj-desc">Visual programming curriculum for introductory robotics and computational thinking</div>
+    <div class="proj-stack">Scratch + Sensors</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-copy">© Dr. Hirak Sarkar 2025 · Kolkata, India</div>
+    <div class="footer-links">
+      <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
+      <span class="footer-sep">/</span>
+      <a href="https://www.researchgate.net" target="_blank" rel="noopener">ResearchGate</a>
+      <span class="footer-sep">/</span>
+      <a href="https://orcid.org/0000-0002-4444-2818" target="_blank" rel="noopener">ORCID</a>
+      <span class="footer-sep">/</span>
+      <a href="mailto:dr.hiraksarkar@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const els=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>
