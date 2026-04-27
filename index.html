@@ -471,7 +471,7 @@
             break;
         }
 
-        const TILT_RANGE = 40;
+        const TILT_RANGE = 28; // Lowered from 40 for higher sensitivity to micro-movements
         const clampedX = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawX));
         const clampedY = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawY));
 
@@ -506,8 +506,10 @@
 
       // Animation loop
       function animateTextPressure() {
-        mouse.x += (cursor.x - mouse.x) / 12;
-        mouse.y += (cursor.y - mouse.y) / 12;
+        // Gyro utilizes heavy damping to achieve a liquid-smooth float effect devoid of sensor jitter
+        const damping = gyroActive ? 35 : 12;
+        mouse.x += (cursor.x - mouse.x) / damping;
+        mouse.y += (cursor.y - mouse.y) / damping;
 
         const lerpSpeed = targetIntensity > currentIntensity ? 0.08 : 0.04;
         currentIntensity += (targetIntensity - currentIntensity) * lerpSpeed;
