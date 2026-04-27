@@ -14,41 +14,6 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* Text Pressure variable font */
-    @font-face {
-      font-family: 'Compressa VF';
-      src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
-      font-style: normal;
-    }
-
-    .text-pressure-container {
-      position: relative;
-      width: 100%;
-      margin-bottom: 1.4rem;
-      cursor: default;
-    }
-
-    .text-pressure-title {
-      font-family: 'Compressa VF', var(--sans);
-      text-transform: uppercase;
-      font-size: clamp(3.5rem, 10vw, 7.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      color: var(--fg);
-      margin: 0;
-      user-select: none;
-      white-space: nowrap;
-      font-weight: 100;
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .text-pressure-title span {
-      display: inline-block;
-      will-change: font-variation-settings;
-    }
-  </style>
 </head>
 
 <body>
@@ -450,88 +415,87 @@
         });
       }
 
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      // Make effect universally active from the start so it's ready for any input
+      targetIntensity = INTENSITY_INSIDE;
 
-      if (isMobile) {
-        targetIntensity = INTENSITY_INSIDE;
+      // 1. Mouse Fallback (Desktop)
+      window.addEventListener('mousemove', (e) => {
+        cursor.x = e.clientX;
+        cursor.y = e.clientY;
+      }, { passive: true });
 
-        // ---- Orientation handler ----
-        function handleOrientation(e) {
-          if (e.beta === null || e.gamma === null) return;
+      // 2. Touch Fallback (Mobile without gyro)
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) {
+          cursor.x = e.touches[0].clientX;
+          cursor.y = e.touches[0].clientY;
+        }
+      }, { passive: true });
 
-          // screen.orientation.angle is the modern API; fall back to window.orientation
-          const screenAngle = (
-            (typeof screen !== 'undefined' && screen.orientation?.angle) ??
-            window.orientation ??
-            0
-          );
+      // 3. Gyroscope (Mobile)
+      let gyroActive = false;
+      function handleOrientation(e) {
+        if (e.beta === null || e.gamma === null) return;
+        gyroActive = true; // Signals that we are receiving valid gyro data
 
-          let rawX, rawY;
+        const screenAngle = (
+          (typeof screen !== 'undefined' && screen.orientation?.angle) ??
+          window.orientation ??
+          0
+        );
 
-          // Beta  = front/back tilt  (0° = flat, 90° = upright portrait)
-          // Gamma = left/right tilt  (-90° = left, 90° = right)
-          // Axes swap when screen rotates
-          switch (Math.round(screenAngle / 90) * 90) {
-            case 90:                          // Landscape-right
-              rawX = e.beta - 90;
-              rawY = -e.gamma;
-              break;
-            case -90:
-            case 270:                         // Landscape-left
-              rawX = -(e.beta - 90);
-              rawY = e.gamma;
-              break;
-            case 180:                         // Portrait upside-down
-              rawX = -e.gamma;
-              rawY = -(e.beta - 90);
-              break;
-            default:                          // Portrait (0°)
-              rawX = e.gamma;
-              rawY = e.beta - 90;           // 0 when perfectly upright
-              break;
+        let rawX, rawY;
+        switch (Math.round(screenAngle / 90) * 90) {
+          case 90:
+            rawX = e.beta - 90;
+            rawY = -e.gamma;
+            break;
+          case -90:
+          case 270:
+            rawX = -(e.beta - 90);
+            rawY = e.gamma;
+            break;
+          case 180:
+            rawX = -e.gamma;
+            rawY = -(e.beta - 90);
+            break;
+          default:
+            rawX = e.gamma;
+            rawY = e.beta - 90;
+            break;
+        }
+
+        const TILT_RANGE = 40;
+        const clampedX = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawX));
+        const clampedY = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawY));
+
+        cursor.x = ((clampedX + TILT_RANGE) / (TILT_RANGE * 2)) * window.innerWidth;
+        cursor.y = ((clampedY + TILT_RANGE) / (TILT_RANGE * 2)) * window.innerHeight;
+      }
+
+      function startGyro() {
+        window.addEventListener('deviceorientation', handleOrientation, true);
+      }
+
+      // Gyro Permission flow for iOS 13+
+      if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        document.body.addEventListener('click', () => {
+          if (!gyroActive) {
+            DeviceOrientationEvent.requestPermission().then(state => {
+              if (state === 'granted') startGyro();
+            }).catch(console.error);
           }
-
-          // Clamp to ±40° – a natural comfortable tilt range
-          const TILT_RANGE = 40;
-          const clampedX = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawX));
-          const clampedY = Math.max(-TILT_RANGE, Math.min(TILT_RANGE, rawY));
-
-          // Map to screen coordinates
-          cursor.x = ((clampedX + TILT_RANGE) / (TILT_RANGE * 2)) * window.innerWidth;
-          cursor.y = ((clampedY + TILT_RANGE) / (TILT_RANGE * 2)) * window.innerHeight;
-        }
-
-        // ---- Permission flow ----
-        function startGyro() {
-          window.addEventListener('deviceorientation', handleOrientation, true);
-        }
-
-        if (
-          typeof DeviceOrientationEvent !== 'undefined' &&
-          typeof DeviceOrientationEvent.requestPermission === 'function'
-        ) {
-          // iOS 13+ requires a user-gesture to call requestPermission()
-          function requestOnGesture() {
-            DeviceOrientationEvent.requestPermission()
-              .then(state => {
-                if (state === 'granted') startGyro();
-              })
-              .catch(() => {
-                // Permission denied or unsupported — effect simply stays at rest intensity
-              });
+        }, { once: true });
+        
+        document.body.addEventListener('touchstart', () => {
+          if (!gyroActive) {
+            DeviceOrientationEvent.requestPermission().then(state => {
+              if (state === 'granted') startGyro();
+            }).catch(console.error);
           }
-          document.addEventListener('touchstart', requestOnGesture, { once: true });
-        } else {
-          // Android, older iOS, and all other browsers — no permission needed
-          startGyro();
-        }
-
+        }, { once: true });
       } else {
-        // Desktop mouse tracking
-        window.addEventListener('mousemove', (e) => {
-          cursor.x = e.clientX;
-          cursor.y = e.clientY;
-        });
+        startGyro();
       }
 
       // Animation loop

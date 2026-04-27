@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
+/* Text Pressure variable font */
+@font-face {
+  font-family: 'Compressa VF';
+  src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+  font-style: normal;
+}
+
 /* ===== RESET ===== */
 *,
 *::before,
@@ -11,15 +18,20 @@
 
 /* ===== TOKENS ===== */
 :root {
-  --bg: #243e36;
-  --bg-light: #2d4f44;
-  --bg-card: #1e3530;
-  --fg: #f1f7ed;
-  --fg-dim: rgba(241, 247, 237, 0.6);
-  --accent: #7ca982;
-  --accent-glow: rgba(124, 169, 130, 0.12);
-  --accent-bright: #9ac4a0;
-  --rule: rgba(241, 247, 237, 0.1);
+  --bg: #0A0B0E;
+  /* Deep Void Black */
+  --bg-light: #16171B;
+  /* Subdued Graphite */
+  --bg-card: #101115;
+  /* Slate Component base */
+  --fg: #F4F1ED;
+  /* Sharp Platinum */
+  --fg-dim: rgba(244, 241, 237, 0.55);
+  --accent: #FF4A1C;
+  /* Solar Plasma Orange */
+  --accent-glow: rgba(255, 74, 28, 0.12);
+  --accent-bright: #FF8F70;
+  --rule: rgba(244, 241, 237, 0.06);
 
   --sans: "Space Grotesk", system-ui, sans-serif;
   --mono: "JetBrains Mono", "Space Mono", monospace;
@@ -30,21 +42,13 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) var(--bg);
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 ::-webkit-scrollbar {
-  width: 6px
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg)
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 3px
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 body {
@@ -72,7 +76,7 @@ a:hover {
 }
 
 ::selection {
-  background: rgba(124, 169, 130, 0.3);
+  background: rgba(255, 74, 28, 0.3);
   color: var(--fg)
 }
 
@@ -107,13 +111,35 @@ a:hover {
   text-align: center;
 }
 
-.hero-center .text-pressure-container {
-  margin-bottom: 1.5rem;
+.text-pressure-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.4rem;
+  cursor: default;
+}
+
+.text-pressure-title {
+  font-family: 'Compressa VF', var(--sans);
+  text-transform: uppercase;
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  margin: 0;
+  user-select: none;
+  white-space: nowrap;
+  font-weight: 100;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.text-pressure-title span {
+  display: inline-block;
+  will-change: font-variation-settings;
 }
 
 .hero-center .text-pressure-title {
   justify-content: center;
-  /* margin-left: -1rem; */
 }
 
 /* Hero links row */
@@ -808,14 +834,12 @@ section {
 
 .footer-contact a {
   color: var(--fg-dim);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-  transition: color 0.3s var(--transition);
+  text-decoration: none !important;
 }
 
 .footer-contact a:hover {
   color: var(--accent);
+  text-decoration: none !important;
 }
 
 .footer-links {
@@ -869,22 +893,22 @@ section {
   z-index: 0 !important;
   pointer-events: none !important;
   background:
-    radial-gradient(ellipse 120% 60% at 20% 0%, rgba(124, 169, 130, 0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 100% 50% at 80% 0%, rgba(241, 247, 237, 0.06) 0%, transparent 70%) !important;
+    radial-gradient(ellipse 120% 60% at 20% 0%, rgba(255, 74, 28, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 50% at 80% 0%, rgba(244, 241, 237, 0.05) 0%, transparent 70%) !important;
   animation: aurora-dance 6s ease-in-out infinite alternate !important;
 }
 
 @keyframes aurora-dance {
   0% {
     background:
-      radial-gradient(ellipse 120% 60% at 20% 0%, rgba(124, 169, 130, 0.15) 0%, transparent 70%),
-      radial-gradient(ellipse 100% 50% at 80% 0%, rgba(241, 247, 237, 0.06) 0%, transparent 70%);
+      radial-gradient(ellipse 120% 60% at 20% 0%, rgba(255, 74, 28, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 50% at 80% 0%, rgba(244, 241, 237, 0.05) 0%, transparent 70%) !important;
   }
 
   100% {
     background:
-      radial-gradient(ellipse 120% 60% at 80% 0%, rgba(124, 169, 130, 0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 100% 50% at 30% 0%, rgba(241, 247, 237, 0.08) 0%, transparent 70%);
+      radial-gradient(ellipse 120% 60% at 60% -20%, rgba(255, 74, 28, 0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 50% at 20% 10%, rgba(244, 241, 237, 0.08) 0%, transparent 70%) !important;
   }
 }
 
