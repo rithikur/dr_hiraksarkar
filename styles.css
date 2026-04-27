@@ -138,6 +138,10 @@ a:hover {
   will-change: font-variation-settings;
 }
 
+.mobile-only {
+  display: none;
+}
+
 .hero-center .text-pressure-title {
   justify-content: center;
 }
@@ -992,7 +996,20 @@ section {
     align-items: flex-start;
   }
 
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
   .text-pressure-title {
-    font-size: clamp(2.5rem, 14vw, 4.5rem);
+    font-size: clamp(3rem, 15vw, 5.5rem); /* Scaled slightly to fit 2 lines perfectly */
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    justify-content: center;
+    line-height: 0.9;
+    margin-bottom: 0.2rem;
   }
 }

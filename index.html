@@ -24,7 +24,13 @@
     <header class="header">
       <div class="hero-center">
         <div class="text-pressure-container reveal" id="textPressureContainer">
-          <h1 class="text-pressure-title" id="textPressureLine1" data-text="Dr. Hirak Sarkar"></h1>
+          <div class="desktop-only">
+            <h1 class="text-pressure-title" data-text="Dr. Hirak Sarkar"></h1>
+          </div>
+          <div class="mobile-only">
+            <h1 class="text-pressure-title" data-text="Dr. Hirak"></h1>
+            <h1 class="text-pressure-title" data-text="Sarkar"></h1>
+          </div>
         </div>
         <!-- <div class="hero-links reveal">
           <a href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a>
@@ -508,6 +514,8 @@
 
         lines.forEach(line => {
           const titleRect = line.getBoundingClientRect();
+          if (titleRect.width === 0) return; // Skip calculation for hidden elements (desktop/mobile swap)
+          
           const maxDist = titleRect.width / 2;
 
           const spans = line.querySelectorAll('span');
