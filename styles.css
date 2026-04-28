@@ -18,15 +18,16 @@
 
 /* ===== TOKENS ===== */
 :root {
-  --bg: #243e36;
-  --bg-light: #2d4f44;
-  --bg-card: #1e3530;
-  --fg: #f1f7ed;
-  --fg-dim: rgba(241, 247, 237, 0.55);
-  --accent: #7ca982;
-  --accent-glow: rgba(124, 169, 130, 0.12);
-  --accent-bright: #9ac4a0;
-  --rule: rgba(241, 247, 237, 0.08);
+  /* ===== SOLAR WARMTH — Parchment & Copper ===== */
+  --bg: #FAF7F2;
+  --bg-light: #F0EBE3;
+  --bg-card: #FFFFFF;
+  --fg: #1C1917;
+  --fg-dim: rgba(28, 25, 23, 0.50);
+  --accent: #C75C2A;
+  --accent-glow: rgba(199, 92, 42, 0.07);
+  --accent-bright: #DB7040;
+  --rule: rgba(28, 25, 23, 0.08);
 
   --sans: "Space Grotesk", system-ui, sans-serif;
   --mono: "JetBrains Mono", "Space Mono", monospace;
@@ -71,7 +72,7 @@ a:hover {
 }
 
 ::selection {
-  background: rgba(124, 169, 130, 0.3);
+  background: rgba(199, 92, 42, 0.18);
   color: var(--fg)
 }
 
@@ -391,8 +392,8 @@ section {
   font-size: 0.62rem;
   font-style: normal;
   letter-spacing: 0.04em;
-  color: #FFD700;
-  background: rgba(255, 215, 0, 0.15);
+  color: var(--accent);
+  background: var(--accent-glow);
   padding: 0.15rem 0.5rem;
   margin-left: 0.5rem;
   vertical-align: middle;
@@ -477,7 +478,7 @@ section {
 
 .proj-stack-tag {
   background: var(--accent-glow);
-  border: 1px solid rgba(124, 169, 130, 0.2);
+  border: 1px solid rgba(199, 92, 42, 0.18);
   padding: 0.15rem 0.5rem;
 }
 
@@ -890,8 +891,7 @@ section {
 }
 
 .footer-bottom {
-  background: #C4C4C4;
-  /* Using a solid light grey closely matching the original image design */
+  background: var(--fg);
   padding: 1.2rem 0;
   text-align: center;
   width: 100%;
@@ -901,8 +901,7 @@ section {
   font-family: var(--sans);
   font-size: 1rem;
   font-weight: 700;
-  color: #1A1A1A;
-  /* Dark almost-black for contrast against the grey */
+  color: var(--bg);
 }
 
 /* ===== AURORA EASTER EGG ===== */
@@ -917,22 +916,22 @@ section {
   z-index: 0 !important;
   pointer-events: none !important;
   background:
-    radial-gradient(ellipse 120% 60% at 20% 0%, rgba(124, 169, 130, 0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 100% 50% at 80% 0%, rgba(241, 247, 237, 0.05) 0%, transparent 70%) !important;
+    radial-gradient(ellipse 120% 60% at 20% 0%, rgba(199, 92, 42, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 50% at 80% 0%, rgba(219, 112, 64, 0.06) 0%, transparent 70%) !important;
   animation: aurora-dance 6s ease-in-out infinite alternate !important;
 }
 
 @keyframes aurora-dance {
   0% {
     background:
-      radial-gradient(ellipse 120% 60% at 20% 0%, rgba(124, 169, 130, 0.15) 0%, transparent 70%),
-      radial-gradient(ellipse 100% 50% at 80% 0%, rgba(241, 247, 237, 0.05) 0%, transparent 70%) !important;
+      radial-gradient(ellipse 120% 60% at 20% 0%, rgba(199, 92, 42, 0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 50% at 80% 0%, rgba(219, 112, 64, 0.06) 0%, transparent 70%) !important;
   }
 
   100% {
     background:
-      radial-gradient(ellipse 120% 60% at 60% -20%, rgba(124, 169, 130, 0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 100% 50% at 20% 10%, rgba(241, 247, 237, 0.08) 0%, transparent 70%) !important;
+      radial-gradient(ellipse 120% 60% at 60% -20%, rgba(199, 92, 42, 0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 50% at 20% 10%, rgba(219, 112, 64, 0.08) 0%, transparent 70%) !important;
   }
 }
 
