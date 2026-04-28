@@ -1,8 +1,3 @@
-// ============================================================
-// DROP-IN REPLACEMENT — paste this entire <script> block into
-// the portfolio HTML, replacing the existing one.
-// ============================================================
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== SCROLL REVEAL =====
@@ -19,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dx = b.x - a.x, dy = b.y - a.y;
         return Math.sqrt(dx * dx + dy * dy);
     };
-
     const getAttr = (distance, maxDist, minVal, maxVal) => {
         const val = maxVal - Math.abs((maxVal * distance) / maxDist);
         return Math.max(minVal, val + minVal);
@@ -27,20 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const lines = document.querySelectorAll('.text-pressure-title');
     lines.forEach(line => {
-        const chars = line.dataset.text.split('');
-        line.innerHTML = chars.map(char =>
+        line.innerHTML = line.dataset.text.split('').map(char =>
             char === ' '
                 ? `<span style="display:inline-block;width:0.3em">&nbsp;</span>`
                 : `<span data-char="${char}" style="display:inline-block;color:var(--fg)">${char}</span>`
         ).join('');
     });
 
+    // Virtual cursor — this is what the text reacts to
     const cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    // Lerped follower — smoothly chases cursor each frame
     const mouse = { x: cursor.x, y: cursor.y };
 
     let targetIntensity = 1.0;
     let currentIntensity = 1.0;
-
     const REST_WGHT = 800, REST_WDTH = 100;
 
     const heroSection = document.querySelector('.header');
@@ -56,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.y = e.clientY;
     }, { passive: true });
 
-    // 2. Touch (Mobile — fallback when gyro absent)
+    // 2. Touch (Mobile fallback)
     window.addEventListener('touchmove', e => {
         if (e.touches.length > 0) {
             cursor.x = e.touches[0].clientX;
@@ -64,37 +58,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // ===== 3. GYROSCOPE — IMPROVED =====
+    // ===== 3. GYROSCOPE =====
     let gyroActive = false;
 
-    // Baseline: collect N readings and average them for a stable neutral position
-    const BASELINE_COUNT = 25;
+    // Raw values written by the sensor, read by rAF — decoupled for consistent smoothing
+    let rawTiltX = 0;
+    let rawTiltY = 0;
+
+    // These are the smoothed values, updated every animation frame at 60fps
+    let smoothTiltX = 0;
+    let smoothTiltY = 0;
+
+    // Baseline: average first N readings so the neutral position is solid
+    const BASELINE_COUNT = 30;
     let baselineSamples = [];
     let baselineBeta = null;
     let baselineGamma = null;
+    let baselineReady = false;
 
-    // Low-pass filter state — smooths raw sensor noise before mapping
-    let filteredRawX = 0;
-    let filteredRawY = 0;
-    const GYRO_LPF = 0.25; // 0 = frozen, 1 = raw (0.20–0.30 is the sweet spot)
+    // Low-pass alpha applied per animation frame — lower = silkier, more lag
+    // 0.08 at 60fps = ~20 frames to settle, feels like smooth liquid
+    const SMOOTH_ALPHA = 0.08;
 
-    // Dead zone in degrees — don't move the virtual cursor for tiny tremors
-    const DEAD_ZONE_DEG = 0.6;
+    // Tilt degrees that cover the full screen width/height
+    const TILT_RANGE = 18;
 
-    // Tilt range in degrees that maps to full screen edge-to-edge
-    const TILT_RANGE = 16;
+    // Soft dead zone threshold in degrees
+    const SOFT_DEAD_ZONE = 1.2;
+
+    // Smoothly fades values near zero to zero — no hard snapping
+    function softDeadZone(v) {
+        const abs = Math.abs(v);
+        if (abs < SOFT_DEAD_ZONE) return 0;
+        return Math.sign(v) * (abs - SOFT_DEAD_ZONE);
+    }
 
     function resetBaseline() {
         baselineSamples = [];
         baselineBeta = null;
         baselineGamma = null;
+        baselineReady = false;
+        rawTiltX = rawTiltY = smoothTiltX = smoothTiltY = 0;
     }
 
-    // Double-tap anywhere to recalibrate (useful if user picks up phone at a new angle)
+    // Double-tap anywhere to recalibrate
     let lastTap = 0;
     document.addEventListener('touchend', () => {
         const now = Date.now();
-        if (now - lastTap < 300) resetBaseline();
+        if (now - lastTap < 280) resetBaseline();
         lastTap = now;
     }, { passive: true });
 
@@ -103,70 +114,46 @@ document.addEventListener('DOMContentLoaded', () => {
         gyroActive = true;
 
         // Phase 1: accumulate baseline samples
-        if (baselineSamples.length < BASELINE_COUNT) {
+        if (!baselineReady) {
             baselineSamples.push({ beta: e.beta, gamma: e.gamma });
-            if (baselineSamples.length === BASELINE_COUNT) {
+            if (baselineSamples.length >= BASELINE_COUNT) {
                 baselineBeta = baselineSamples.reduce((s, v) => s + v.beta, 0) / BASELINE_COUNT;
                 baselineGamma = baselineSamples.reduce((s, v) => s + v.gamma, 0) / BASELINE_COUNT;
+                baselineReady = true;
             }
-            return; // don't move cursor yet — baseline not ready
+            return;
         }
 
-        // Phase 2: compute delta from neutral position
+        // Phase 2: compute delta from neutral
         let dBeta = e.beta - baselineBeta;
         let dGamma = e.gamma - baselineGamma;
 
-        // Unwrap discontinuities near ±180°
         if (dBeta > 180) dBeta -= 360;
         if (dBeta < -180) dBeta += 360;
         if (dGamma > 180) dGamma -= 360;
         if (dGamma < -180) dGamma += 360;
 
-        // Map axes correctly for all screen orientations
-        const angle = (typeof screen !== 'undefined' && screen.orientation?.angle)
-            ?? window.orientation ?? 0;
-
-        let rawX, rawY;
+        // Correct axis mapping for all screen orientations
+        const angle = (screen?.orientation?.angle) ?? window.orientation ?? 0;
         switch (Math.round(angle / 90) * 90) {
-            case 90: rawX = dBeta; rawY = -dGamma; break;
-            case -90: case 270: rawX = -dBeta; rawY = dGamma; break;
-            case 180: rawX = -dGamma; rawY = -dBeta; break;
-            default: rawX = dGamma; rawY = dBeta; break;
+            case 90: rawTiltX = dBeta; rawTiltY = -dGamma; break;
+            case -90: case 270: rawTiltX = -dBeta; rawTiltY = dGamma; break;
+            case 180: rawTiltX = -dGamma; rawTiltY = -dBeta; break;
+            default: rawTiltX = dGamma; rawTiltY = dBeta; break;
         }
-
-        // Dead zone — kill micro-jitter when phone is stationary
-        if (Math.abs(rawX) < DEAD_ZONE_DEG) rawX = 0;
-        if (Math.abs(rawY) < DEAD_ZONE_DEG) rawY = 0;
-
-        // Low-pass filter on raw values (removes remaining sensor noise)
-        filteredRawX += (rawX - filteredRawX) * GYRO_LPF;
-        filteredRawY += (rawY - filteredRawY) * GYRO_LPF;
-
-        // Normalise to [-1, 1]
-        const nx = Math.max(-1, Math.min(1, filteredRawX / TILT_RANGE));
-        const ny = Math.max(-1, Math.min(1, filteredRawY / TILT_RANGE));
-
-        // Quadratic ease: fast response near centre, tapers off at extremes
-        // This mimics how a real cursor feel at the edge vs the middle of the screen
-        const ex = nx * (2 - Math.abs(nx)) * 0.7; // slight dampening at edges
-        const ey = ny * (2 - Math.abs(ny)) * 0.7;
-
-        // Map to screen coordinates
-        cursor.x = ((ex + 1) / 2) * window.innerWidth;
-        cursor.y = ((ey + 1) / 2) * window.innerHeight;
+        // Intentionally no filtering here — rAF owns all smoothing at 60fps
     }
 
     function startGyro() {
         window.addEventListener('deviceorientation', handleOrientation, true);
     }
 
-    // iOS 13+ requires permission on a user gesture
     if (typeof DeviceOrientationEvent !== 'undefined' &&
         typeof DeviceOrientationEvent.requestPermission === 'function') {
         const requestGyro = () => {
             if (gyroActive) return;
             DeviceOrientationEvent.requestPermission()
-                .then(state => { if (state === 'granted') startGyro(); })
+                .then(s => { if (s === 'granted') startGyro(); })
                 .catch(console.error);
         };
         document.body.addEventListener('click', requestGyro, { once: true });
@@ -177,9 +164,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== ANIMATION LOOP =====
     function animateTextPressure() {
-        // Gyro: damping 5 = snappy but smooth (was 40 — way too sluggish)
-        // Mouse/touch: damping 12 = natural desktop feel
-        const damping = gyroActive ? 5 : 12;
+
+        if (gyroActive && baselineReady) {
+            // Smooth at 60fps — consistent regardless of sensor event frequency
+            smoothTiltX += (rawTiltX - smoothTiltX) * SMOOTH_ALPHA;
+            smoothTiltY += (rawTiltY - smoothTiltY) * SMOOTH_ALPHA;
+
+            // Soft dead zone — no snapping, just a gentle fade near centre
+            const dzX = softDeadZone(smoothTiltX);
+            const dzY = softDeadZone(smoothTiltY);
+
+            // Normalise [-1, 1] then apply blended linear+quadratic curve
+            // 60% linear keeps it responsive, 40% quadratic softens the edges
+            const nx = Math.max(-1, Math.min(1, dzX / TILT_RANGE));
+            const ny = Math.max(-1, Math.min(1, dzY / TILT_RANGE));
+            const ex = Math.sign(nx) * nx * nx * 0.4 + nx * 0.6;
+            const ey = Math.sign(ny) * ny * ny * 0.4 + ny * 0.6;
+
+            cursor.x = ((ex + 1) / 2) * window.innerWidth;
+            cursor.y = ((ey + 1) / 2) * window.innerHeight;
+        }
+
+        // Lerped follow — gyro uses damping 6 (reactive but gliding)
+        const damping = gyroActive ? 6 : 12;
         mouse.x += (cursor.x - mouse.x) / damping;
         mouse.y += (cursor.y - mouse.y) / damping;
 
@@ -190,22 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const titleRect = line.getBoundingClientRect();
             if (titleRect.width === 0) return;
             const maxDist = titleRect.width / 2;
-
             line.querySelectorAll('span').forEach(span => {
-                if (!span) return;
                 const rect = span.getBoundingClientRect();
-                const charCenter = { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 };
-                const d = distFn(mouse, charCenter);
-
+                const d = distFn(mouse, { x: rect.x + rect.width / 2, y: rect.y + rect.height / 2 });
                 const fullWght = Math.floor(getAttr(d, maxDist, 500, 900));
                 const fullWdth = Math.floor(getAttr(d, maxDist, 60, 140));
                 const wght = Math.floor(REST_WGHT + (fullWght - REST_WGHT) * currentIntensity);
                 const wdth = Math.floor(REST_WDTH + (fullWdth - REST_WDTH) * currentIntensity);
-
-                const newSettings = `'wght' ${wght}, 'wdth' ${wdth}`;
-                if (span.style.fontVariationSettings !== newSettings) {
-                    span.style.fontVariationSettings = newSettings;
-                }
+                const s = `'wght' ${wght}, 'wdth' ${wdth}`;
+                if (span.style.fontVariationSettings !== s) span.style.fontVariationSettings = s;
             });
         });
 
@@ -214,17 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateTextPressure();
 
-    // ===== KONAMI CODE EASTER EGG =====
-    const konamiCode = [
-        'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-        'KeyB', 'KeyA'
-    ];
+    // ===== KONAMI CODE =====
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
     let konamiIndex = 0, auroraActive = false;
     document.addEventListener('keydown', e => {
         if (e.code === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
+            if (++konamiIndex === konamiCode.length) {
                 konamiIndex = 0;
                 auroraActive = !auroraActive;
                 document.body.classList.toggle('aurora-active', auroraActive);
@@ -233,8 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.classList.add('show');
                 setTimeout(() => toast.classList.remove('show'), 3000);
             }
-        } else {
-            konamiIndex = 0;
-        }
+        } else { konamiIndex = 0; }
     });
 });
