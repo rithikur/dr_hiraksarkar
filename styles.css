@@ -689,60 +689,85 @@ section {
   line-height: 1;
 }
 
-/* ===== TEACHING — Accordion-style with expand indicator ===== */
+/* ===== TEACHING — Clean Card Grid ===== */
 .teach-group {
-  margin-bottom: 1.5rem
+  margin-bottom: 0.5rem;
 }
 
 .teach-group:last-child {
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 .teach-org {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  padding: 0.7rem 1rem;
-  background: var(--bg-card);
-  border-left: 3px solid var(--accent);
-  margin-bottom: 0.3rem;
-}
-
-.teach-row {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
-  align-items: center;
-  padding: 0.65rem 1rem 0.65rem 1.5rem;
-  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--rule);
-  transition: all .2s var(--transition);
 }
 
-.teach-row:last-child {
-  border-bottom: none
+@media (max-width: 600px) {
+  .teach-org {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
 }
 
-/* .teach-row:hover {
-  background: var(--accent-glow);
-  padding-left: 2rem;
-} */
+.teach-org-name {
+  font-family: var(--sans);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.teach-org-duration {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  background: var(--bg-card);
+  padding: 0.2rem 0.6rem;
+}
+
+.teach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.teach-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all .3s var(--transition);
+}
+
+.teach-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-light);
+}
 
 .teach-course {
-  font-size: 0.88rem;
-  color: var(--fg)
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
 }
 
 .teach-level {
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--fg-dim);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  flex-shrink: 0;
-  background: var(--bg-card);
-  padding: 0.2rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* ===== VIEW ALL LINK ===== */
@@ -812,7 +837,7 @@ section {
 
 /* ===== FOOTER ===== */
 .site-footer {
-  margin-top: 6rem;
+  margin-top: 1.5rem;
   background: var(--bg);
 }
 
@@ -874,7 +899,7 @@ section {
 
 .footer-copy {
   font-family: var(--sans);
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1A1A1A;
   /* Dark almost-black for contrast against the grey */
@@ -1000,7 +1025,8 @@ section {
   }
 
   .text-pressure-title {
-    font-size: clamp(3rem, 15vw, 5.5rem); /* Scaled slightly to fit 2 lines perfectly */
+    font-size: clamp(3rem, 15vw, 5.5rem);
+    /* Scaled slightly to fit 2 lines perfectly */
     flex-wrap: nowrap;
     white-space: nowrap;
     justify-content: center;

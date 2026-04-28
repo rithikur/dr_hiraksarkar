@@ -14,6 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
 </head>
 
 <body>
@@ -311,15 +312,28 @@
       <div class="section-label">Teaching</div>
 
       <div class="teach-group">
-        <div class="teach-org">KPR Institute of Engineering and Technology · 2025–Present</div>
-        <div class="teach-row"><span class="teach-course">Machine Vision and Image Processing</span><span
-            class="teach-level">B.E. IV · Theory</span></div>
-        <div class="teach-row"><span class="teach-course">Electric and Hybrid Vehicle</span><span
-            class="teach-level">B.E. III · Theory &amp; Lab</span></div>
-        <div class="teach-row"><span class="teach-course">Microcontroller and Embedded Systems</span><span
-            class="teach-level">B.E. II · Theory &amp; Lab</span></div>
-        <div class="teach-row"><span class="teach-course">Sensors and Signal Processing</span><span
-            class="teach-level">B.E. II · Theory &amp; Lab</span></div>
+        <div class="teach-org">
+          <div class="teach-org-name">KPR Institute of Engineering and Technology</div>
+          <div class="teach-org-duration">2025–Present</div>
+        </div>
+        <div class="teach-grid">
+          <div class="teach-card">
+            <div class="teach-course">Machine Vision and Image Processing</div>
+            <div class="teach-level">B.E. IV · Theory</div>
+          </div>
+          <div class="teach-card">
+            <div class="teach-course">Electric and Hybrid Vehicle</div>
+            <div class="teach-level">B.E. III · Theory &amp; Lab</div>
+          </div>
+          <div class="teach-card">
+            <div class="teach-course">Microcontroller and Embedded Systems</div>
+            <div class="teach-level">B.E. II · Theory &amp; Lab</div>
+          </div>
+          <div class="teach-card">
+            <div class="teach-course">Sensors and Signal Processing</div>
+            <div class="teach-level">B.E. II · Theory &amp; Lab</div>
+          </div>
+        </div>
       </div>
 
       <a href="teaching.html" class="view-all">View all courses →</a>
@@ -342,11 +356,11 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© Dr. Hirak Sarkar 2025 · Kolkata, India</div>
+      <div class="footer-copy">© Dr. Hirak Sarkar 2025</div>
     </div>
   </footer>
 
-  <script>
+  <!-- <script>
     document.addEventListener('DOMContentLoaded', () => {
       // ===== SCROLL REVEAL =====
       const els = document.querySelectorAll('.reveal');
@@ -512,7 +526,7 @@
             }).catch(console.error);
           }
         }, { once: true });
-        
+
         document.body.addEventListener('touchstart', () => {
           if (!gyroActive) {
             DeviceOrientationEvent.requestPermission().then(state => {
@@ -537,7 +551,7 @@
         lines.forEach(line => {
           const titleRect = line.getBoundingClientRect();
           if (titleRect.width === 0) return; // Skip calculation for hidden elements (desktop/mobile swap)
-          
+
           const maxDist = titleRect.width / 2;
 
           const spans = line.querySelectorAll('span');
@@ -598,7 +612,7 @@
         }
       });
     });
-  </script>
+  </script> -->
 </body>
 
 </html>
