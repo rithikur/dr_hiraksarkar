@@ -60,82 +60,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== 3. GYROSCOPE — HIGH-PERFORMANCE MOBILE TRACKING =====
     let gyroActive = false;
+    
+    // Auto-adjusting baseline so it's always centered wherever the user holds it
+    let baseBeta = 0;
+    let baseGamma = 0;
+    let hasBaseline = false;
 
-    // Raw tilt values written by the sensor event, read by rAF
-    let rawTiltX = 0;
-    let rawTiltY = 0;
-
-    // Previous raw values for velocity calculation
-    let prevRawTiltX = 0;
-    let prevRawTiltY = 0;
-
-    // Smoothed tilt values — updated every animation frame
-    let smoothTiltX = 0;
-    let smoothTiltY = 0;
-
-    // Baseline calibration — average first N readings for a solid neutral position
-    const BASELINE_COUNT = 15;
-    let baselineSamples = [];
-    let baselineBeta = null;
-    let baselineGamma = null;
-    let baselineReady = false;
-
-    // Tilt degrees that map to full screen width/height — lower = more sensitive
-    const TILT_RANGE = 12;
-
-    // Frame-rate-independent smoothing: track time between frames
-    let lastFrameTime = 0;
-
-    function resetBaseline() {
-        baselineSamples = [];
-        baselineBeta = null;
-        baselineGamma = null;
-        baselineReady = false;
-        rawTiltX = rawTiltY = smoothTiltX = smoothTiltY = 0;
-        prevRawTiltX = prevRawTiltY = 0;
-    }
-
-    // Double-tap anywhere to recalibrate
-    let lastTap = 0;
-    document.addEventListener('touchend', () => {
-        const now = Date.now();
-        if (now - lastTap < 280) resetBaseline();
-        lastTap = now;
-    }, { passive: true });
+    // Smoothed delta for fluid motion
+    let smoothX = 0;
+    let smoothY = 0;
+    const MAX_TILT = 25; // Degrees of tilt to reach edge of screen
 
     function handleOrientation(e) {
         if (e.beta === null || e.gamma === null) return;
         gyroActive = true;
-
-        // Phase 1: accumulate baseline samples
-        if (!baselineReady) {
-            baselineSamples.push({ beta: e.beta, gamma: e.gamma });
-            if (baselineSamples.length >= BASELINE_COUNT) {
-                baselineBeta = baselineSamples.reduce((s, v) => s + v.beta, 0) / BASELINE_COUNT;
-                baselineGamma = baselineSamples.reduce((s, v) => s + v.gamma, 0) / BASELINE_COUNT;
-                baselineReady = true;
-            }
+        
+        let b = e.beta;
+        let g = e.gamma;
+        
+        // Handle screen rotation
+        const angle = (screen?.orientation?.angle) ?? window.orientation ?? 0;
+        if (angle === 90) {
+            b = e.gamma; g = -e.beta;
+        } else if (angle === -90 || angle === 270) {
+            b = -e.gamma; g = e.beta;
+        } else if (angle === 180) {
+            b = -e.beta; g = -e.gamma;
+        }
+        
+        if (!hasBaseline) {
+            baseBeta = b;
+            baseGamma = g;
+            hasBaseline = true;
             return;
         }
 
-        // Phase 2: compute delta from neutral
-        let dBeta = e.beta - baselineBeta;
-        let dGamma = e.gamma - baselineGamma;
+        // Calculate difference from baseline
+        let diffBeta = b - baseBeta;
+        let diffGamma = g - baseGamma;
+        
+        // Unwrap to prevent snapping when flipping
+        if (diffBeta > 180) diffBeta -= 360;
+        if (diffBeta < -180) diffBeta += 360;
+        if (diffGamma > 180) diffGamma -= 360;
+        if (diffGamma < -180) diffGamma += 360;
+        
+        // Auto-center the baseline slowly (drift towards current position)
+        // This ensures the cursor naturally returns to center if they hold still
+        baseBeta += diffBeta * 0.015;
+        baseGamma += diffGamma * 0.015;
+        
+        // Current instantaneous tilt
+        let tiltX = diffGamma; 
+        let tiltY = diffBeta;  
 
-        // Unwrap angle wraps to prevent snapping
-        if (dBeta > 180) dBeta -= 360;
-        if (dBeta < -180) dBeta += 360;
-        if (dGamma > 180) dGamma -= 360;
-        if (dGamma < -180) dGamma += 360;
-
-        // Correct axis mapping for all screen orientations
-        const angle = (screen?.orientation?.angle) ?? window.orientation ?? 0;
-        switch (Math.round(angle / 90) * 90) {
-            case 90: rawTiltX = dBeta; rawTiltY = -dGamma; break;
-            case -90: case 270: rawTiltX = -dBeta; rawTiltY = dGamma; break;
-            case 180: rawTiltX = -dGamma; rawTiltY = -dBeta; break;
-            default: rawTiltX = dGamma; rawTiltY = dBeta; break;
-        }
+        // Smooth out the raw tilt data (filters out hand jitter instantly)
+        smoothX += (tiltX - smoothX) * 0.2;
+        smoothY += (tiltY - smoothY) * 0.2;
+        
+        // Map to screen coordinates: tilt of MAX_TILT -> screen edge
+        const normX = Math.max(-1, Math.min(1, smoothX / MAX_TILT));
+        const normY = Math.max(-1, Math.min(1, smoothY / MAX_TILT));
+        
+        cursor.x = (window.innerWidth / 2) + normX * (window.innerWidth * 0.6);
+        cursor.y = (window.innerHeight / 2) + normY * (window.innerHeight * 0.6);
     }
 
     function startGyro() {
@@ -157,80 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== ANIMATION LOOP =====
+    let lastFrameTime = 0;
+    
     function animateTextPressure(timestamp) {
-
-        // Delta-time for frame-rate-independent smoothing
         const dt = lastFrameTime ? Math.min((timestamp - lastFrameTime) / 16.667, 3) : 1;
         lastFrameTime = timestamp;
 
-        if (gyroActive && baselineReady) {
-            // ---- VELOCITY-ADAPTIVE SMOOTHING ----
-            // Measure how fast the raw tilt is changing (°/frame)
-            const velX = Math.abs(rawTiltX - prevRawTiltX);
-            const velY = Math.abs(rawTiltY - prevRawTiltY);
-            prevRawTiltX = rawTiltX;
-            prevRawTiltY = rawTiltY;
-
-            // Adaptive alpha: fast motion → alpha near 0.6 (almost raw),
-            //                  still/jitter → alpha near 0.12 (filtered)
-            // This lets intentional movements pass through instantly while
-            // only damping sensor noise when the device is near-stationary
-            const alphaX = 0.12 + 0.48 * Math.min(1, velX / 2.0);
-            const alphaY = 0.12 + 0.48 * Math.min(1, velY / 2.0);
-
-            // Frame-rate-corrected smoothing
-            smoothTiltX += (rawTiltX - smoothTiltX) * (1 - Math.pow(1 - alphaX, dt));
-            smoothTiltY += (rawTiltY - smoothTiltY) * (1 - Math.pow(1 - alphaY, dt));
-
-            // ---- CUBIC MICRO-FADE (replaces hard dead zone) ----
-            // Instead of killing all movement below a threshold, this uses a
-            // cubic curve that gently reduces very small values while preserving
-            // the feel of intentional micro-movements
-            const FADE_ZONE = 0.5; // degrees — only the tiniest jitter fades
-            const cubicFade = (v) => {
-                const abs = Math.abs(v);
-                if (abs >= FADE_ZONE) return v;
-                // Cubic ramp: smooth transition from 0 at center to full at FADE_ZONE edge
-                const t = abs / FADE_ZONE;
-                return Math.sign(v) * abs * (t * t);
-            };
-            const dzX = cubicFade(smoothTiltX);
-            const dzY = cubicFade(smoothTiltY);
-
-            // ---- CUBIC RESPONSE CURVE ----
-            // Normalise to [-1, 1], then apply a 70/30 linear+cubic blend
-            // Linear keeps it snappy, cubic softens extremes naturally
-            const nx = Math.max(-1, Math.min(1, dzX / TILT_RANGE));
-            const ny = Math.max(-1, Math.min(1, dzY / TILT_RANGE));
-            const ex = nx * 0.7 + Math.sign(nx) * Math.pow(Math.abs(nx), 3) * 0.3;
-            const ey = ny * 0.7 + Math.sign(ny) * Math.pow(Math.abs(ny), 3) * 0.3;
-
-            cursor.x = ((ex + 1) / 2) * window.innerWidth;
-            cursor.y = ((ey + 1) / 2) * window.innerHeight;
-        }
-
-        // ---- ADAPTIVE DAMPING ON LERP FOLLOWER ----
-        // Distance between target and current position determines damping:
-        //   Large distance (fast move) → damping 2 (near-instant snap)
-        //   Small distance (settled)   → damping 8 (liquid glide)
-        // This eliminates the "trailing cursor" feel while keeping micro-movements silky
-        if (gyroActive) {
-            const dx = cursor.x - mouse.x;
-            const dy = cursor.y - mouse.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const screenDiag = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2);
-            const normDist = Math.min(1, dist / (screenDiag * 0.15));
-            // Interpolate damping: 2 at full speed, 8 at rest
-            const damping = 8 - normDist * 6;
-            const step = 1 - Math.pow(1 - (1 / damping), dt);
-            mouse.x += dx * step;
-            mouse.y += dy * step;
-        } else {
-            // Desktop mouse — classic smooth follow
-            const step = 1 - Math.pow(1 - (1 / 12), dt);
-            mouse.x += (cursor.x - mouse.x) * step;
-            mouse.y += (cursor.y - mouse.y) * step;
-        }
+        // Ultra-smooth follower for both mouse and gyro
+        const step = 1 - Math.pow(1 - 0.12, dt);
+        mouse.x += (cursor.x - mouse.x) * step;
+        mouse.y += (cursor.y - mouse.y) * step;
 
         const lerpSpeed = targetIntensity > currentIntensity ? 0.08 : 0.04;
         currentIntensity += (targetIntensity - currentIntensity) * lerpSpeed;
