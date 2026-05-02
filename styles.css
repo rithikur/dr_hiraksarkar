@@ -254,7 +254,7 @@ a:hover {
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.15em;
-  color: var(--fg-muted);
+  color: var(--fg-dim);
   text-transform: uppercase;
   pointer-events: none;
   z-index: 10;
@@ -434,18 +434,16 @@ section {
   margin-bottom: 0.55rem;
   background: var(--bg-card);
   border: 1px solid var(--rule);
-  border-radius: var(--radius);
   transition: all .3s var(--transition);
   position: relative;
   overflow: hidden;
   align-items: stretch;
-  /* box-shadow: var(--shadow-xs); */
+  border: 1px solid var(--rule);
 }
 
 .pub-entry:hover {
-  /* box-shadow: var(--shadow-md); */
   transform: translateX(3px);
-  border-color: var(--accent-subtle);
+  border-color: var(--accent);
 }
 
 .pub-year {
@@ -877,7 +875,7 @@ section {
 
 /* ===== TEACHING — Clean card grid ===== */
 .teach-group {
-  margin-bottom: 2rem;
+  /* margin-bottom: 1rem; */
 }
 
 .teach-group:last-child {
@@ -889,6 +887,7 @@ section {
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 1.2rem;
+  margin-top: 2rem;
   padding-bottom: 0.8rem;
   border-bottom: 1px solid var(--rule);
 }
@@ -1183,6 +1182,12 @@ section {
   font-weight: 500;
   color: var(--bg);
   letter-spacing: 0.06em;
+
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-end; */
+  padding-right: 1rem;
+  gap: 1rem;
 }
 
 /* ===== AURORA EASTER EGG ===== */
