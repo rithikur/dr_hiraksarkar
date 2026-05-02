@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== 3. GYROSCOPE — HIGH-PERFORMANCE MOBILE TRACKING =====
     let gyroActive = false;
-    
+
     // Auto-adjusting baseline so it's always centered wherever the user holds it
     let baseBeta = 0;
     let baseGamma = 0;
@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleOrientation(e) {
         if (e.beta === null || e.gamma === null) return;
         gyroActive = true;
-        
+
         let b = e.beta;
         let g = e.gamma;
-        
+
         // Handle screen rotation
         const angle = (screen?.orientation?.angle) ?? window.orientation ?? 0;
         if (angle === 90) {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (angle === 180) {
             b = -e.beta; g = -e.gamma;
         }
-        
+
         if (!hasBaseline) {
             baseBeta = b;
             baseGamma = g;
@@ -98,30 +98,30 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate difference from baseline
         let diffBeta = b - baseBeta;
         let diffGamma = g - baseGamma;
-        
+
         // Unwrap to prevent snapping when flipping
         if (diffBeta > 180) diffBeta -= 360;
         if (diffBeta < -180) diffBeta += 360;
         if (diffGamma > 180) diffGamma -= 360;
         if (diffGamma < -180) diffGamma += 360;
-        
+
         // Auto-center the baseline slowly (drift towards current position)
         // This ensures the cursor naturally returns to center if they hold still
         baseBeta += diffBeta * 0.015;
         baseGamma += diffGamma * 0.015;
-        
+
         // Current instantaneous tilt
-        let tiltX = diffGamma; 
-        let tiltY = diffBeta;  
+        let tiltX = diffGamma;
+        let tiltY = diffBeta;
 
         // Smooth out the raw tilt data (filters out hand jitter instantly)
         smoothX += (tiltX - smoothX) * 0.2;
         smoothY += (tiltY - smoothY) * 0.2;
-        
+
         // Map to screen coordinates: tilt of MAX_TILT -> screen edge
         const normX = Math.max(-1, Math.min(1, smoothX / MAX_TILT));
         const normY = Math.max(-1, Math.min(1, smoothY / MAX_TILT));
-        
+
         cursor.x = (window.innerWidth / 2) + normX * (window.innerWidth * 0.6);
         cursor.y = (window.innerHeight / 2) + normY * (window.innerHeight * 0.6);
     }
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== ANIMATION LOOP =====
     let lastFrameTime = 0;
-    
+
     function animateTextPressure(timestamp) {
         const dt = lastFrameTime ? Math.min((timestamp - lastFrameTime) / 16.667, 3) : 1;
         lastFrameTime = timestamp;
