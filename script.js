@@ -585,12 +585,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 { title: 'Solar Radio Signal Variations in VLF and VHF Bands', text: 'Solar Radio Signal Variations in VLF and VHF Bands — IEEE Xplore ★ Best Paper Award' },
             ];
             if (isSubPage) {
-                 subPubs.push(
+                subPubs.push(
                     { title: 'Spatiotemporal Analysis of Severe Hailstorms Over Kolkata Using IMD Radar Data', text: 'Spatiotemporal Analysis of Severe Hailstorms Over Kolkata Using IMD Radar Data and ML Approaches' },
                     { title: 'Big Data-Driven Smart Climate Change Prediction', text: 'Big Data-Driven Smart Climate Change Prediction Using ML Framework' },
                     { title: 'Designing an IoT Platform Using Wireless Sensor Network', text: 'Designing an IoT Platform Using Wireless Sensor Network' },
                     { title: 'Comparative Study of ELF and VLF Noise Characteristics of Nor\'wester', text: 'Comparative Study of ELF and VLF Noise Characteristics of Nor\'wester' }
-                 );
+                );
             }
             subPubs.forEach(item => {
                 searchIndex.push({ ...item, label: 'Publication', url: `${basePath}publications.html` });
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
             subBooks.forEach(item => {
                 searchIndex.push({ ...item, label: 'Book', url: `${basePath}publications.html#books-patents` });
             });
-            
+
             searchIndex.push({ title: 'Development of Multipurpose Floor Cleaning Bot', text: 'Development of Multipurpose Floor Cleaning Bot — Patent 2020101185', label: 'Patent', url: `${basePath}publications.html#books-patents` });
             searchIndex.push({ title: 'Design & Fabrication of Smart Health Monitoring System', text: 'Design & Fabrication of Smart Health Monitoring System — Patent 2020102142', label: 'Patent', url: `${basePath}publications.html#books-patents` });
             if (isSubPage) {
@@ -647,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function openSearch() {
             searchOverlay.classList.add('open');
             searchInput.value = '';
-            searchResults.innerHTML = '<div class="search-empty">Type to search across all sections</div>';
+            searchResults.innerHTML = '';
             activeResultIdx = -1;
             // Delay to allow CSS display/visibility transitions to kick in before focusing
             setTimeout(() => {
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Render results ---
         function renderResults(query) {
             if (!query || query.length < 1) {
-                searchResults.innerHTML = '<div class="search-empty">Type to search across all sections</div>';
+                searchResults.innerHTML = '';
                 activeResultIdx = -1;
                 return;
             }

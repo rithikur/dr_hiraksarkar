@@ -1551,6 +1551,9 @@ section {
   font-size: 1rem;
   color: var(--fg);
   line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .search-input::placeholder {
@@ -1580,7 +1583,6 @@ section {
 .search-results {
   overflow-y: auto;
   max-height: calc(70vh - 60px);
-  padding: 0.5rem 0;
 }
 
 .search-empty {
