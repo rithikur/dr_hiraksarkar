@@ -1,0 +1,953 @@
+Curriculum Vitae
+Career Objective: To leverage my expertise for pioneering research and innovation in addressing
+critical challenges in specific field.
+1. Full Name
+
+Dr. Hirak Sarkar
+
+2. Date of Birth
+
+15th October 1993
+
+3. Gender
+
+Male
+
+4. Address
+
+1689, Rajdanga Main Road,
+India, West Bengal, Kolkata - 700107
+
+5. Mobile No.
+
+(+91) 82405-10582 / 96004-10582
+
+6. E-mail
+
+dr.hiraksarkar@gmail.com
+
+7. Languages Known
+8. Teaching Experience
+
+English, Bengali, and Hindi
+8+ years
+(see Section 22 for Details)
+
+9. Research Experience
+
+9+ years
+
+10. Industry Experience
+
+1+ years
+
+11. Title of Ph.D. Thesis
+
+Some Studies for The Early Detection of
+
+Google Scholar Link
+
+(Jan 2016 - Present)
+
+ResearchGate Link
+ORC ID: 0000-0002-4444-2818
+
+Solar Flares and Cyclonic Formation
+12. Title of M. Tech Thesis
+
+Space Weather and its Effects on Communication Systems by
+Remote Sensing Through Space Probes and Satellites
+
+13. Subject of study/ Research Robotics and Automation, BCI Technology, Emerging Technologies
+Interests
+Space Weather & Solar System, Magnetohydrodynamics, Embedded
+System, Signal System Sensing, IoT, Satellite Communication,
+Atmosphere, RF Propagation, Remote Sensing
+14. Area of specialization
+Electronics, Communication Engineering, Mathematics, Mechatronics
+15. Computer Proficiency
+MATLAB, PSPICE, C++, C, HTML, CSS, JavaScript, Fusion 360,
+Python Modules (TensorFlow, PyTorch, Scikit-learn, OpenCV), ROS,
+Arduino, AutoCAD, 3D-Printer, Scratch, PictoBlox, Raspberry Pi
+16. Academic Qualification
+o Ph.D.
+
+Techno India University, West Bengal, Awarded
+
+o Post-Graduation
+
+M. TECH in Electronics and communication Engineering,
+Techno India University, West Bengal, Grade (9.0/10),
+
+o Graduation
+
+2023
+
+2017
+
+B. TECH in Electronics and communication Engineering,
+Maulana Abul Kalam Azad University of Technology
+(Formerly known as W.B.U.T.),
+
+o Higher Secondary
+(Class 12)
+o Secondary
+(Class 10)
+
+2015
+
+Pure Science (Physics, Chemistry, Mathematics, Biology),
+West Bengal Council of Higher Secondary Education
+(WBCHSE),
+
+2011
+
+West Bengal Board of Secondary Education
+(WBBSE),
+
+2009
+
+1
+
+17. Trainings / Projects Undertaken
+Sl. No.
+
+Name of Institute /
+Organization
+
+1.
+
+Oriens Infotech
+
+2.
+
+Kolkata Metro Railway
+
+3.
+
+4.
+
+Bharat Sanchar Nigam
+Limited (BSNL)
+ABB India Limited
+
+Project Title
+
+Duration
+
+Microcontroller Based Embedded
+System Design
+
+July-August 2014
+
+Communication Training
+
+January 2014
+
+Advanced Telecom with Specialization
+
+June 2013
+
+T-314 Controller Software through
+VMware Workstation 17 Player
+
+October 2025
+
+18. Projects Completed on Robotics & AI
+Sl. No.
+
+Project Name
+
+Description
+
+1.
+
+Obstacle Avoidance
+Robot
+
+Robot navigates avoiding
+obstacles using sensors.
+
+2.
+
+Light Following Robot
+
+Robot follows light
+sources.
+
+3.
+
+Line Following Robot
+
+Robot tracks a line path.
+
+4.
+
+Autonomous Robotic
+Arm
+
+Arm controlled for pickand-place tasks.
+
+5.
+
+AI Chatbot
+
+6.
+
+Digital Clock &
+Calculator
+
+AI-powered conversational
+assistant.
+LED display controlled for
+numerical outputs.
+
+7.
+
+Temperature Display
+16x2
+
+Displays temperature
+readings on an LCD.
+
+8.
+
+Solar Powered Bot
+
+9.
+
+Mechatronics Robots (20)
+
+10.
+
+Smart Dustbin
+
+11.
+
+Traffic Light
+
+12.
+
+Smart Door Sensor with
+Buzzer
+
+13.
+
+Radar Using Servo
+
+Robot powered by solar
+energy.
+A collection of 20 robots
+showcasing different
+mechanisms.
+Automated lid opening
+using sensors.
+Simulates traffic light
+control.
+Alarm activated when a
+door opens.
+A radar system simulates
+scanning by rotating a
+sensor on a servo motor.
+2
+
+Key Components
+Ultrasonic sensor,
+Arduino, motor driver, wheels
+LDRs, Arduino, motor
+driver, wheels
+IR sensors, Arduino,
+motor driver, wheels
+Servo motors, Arduino, ESP32
+Python, NLP libraries
+Arduino, 7-segment
+display
+Temperature sensor,
+Arduino, LCD module
+Solar panel, motor driver,
+Arduino
+Motors, gears, Arduino,
+sensors
+Ultrasonic sensor, servo
+motor, Arduino
+LEDs, resistors, Arduino
+Magnetic sensor, buzzer,
+Arduino
+Ultrasonic sensor, servo
+motor, Arduino
+
+14.
+15.
+16.
+17.
+
+18.
+
+19.
+
+20.
+
+21.
+22.
+
+Innovative projects using
+Raspberry Pi as a
+Raspberry Pi Projects
+controller.
+A robotic vacuum cleaner
+Auto Home Cleaner
+for home.
+with Battery
+Robot mimicking a car's
+Gear Bot (Car
+gear system.
+Mechanism, 1-2-N-R)
+Models demonstrating
+Bridge Construction and
+infrastructure and
+Momentum
+momentum.
+Creating 3D physical
+models manually with a
+3D Model using 3D Pen
+3D pen.
+Designing 3D models
+3D Model using
+virtually using TinkerCAD
+TinkerCAD
+software.
+Creating and printing 3D
+3D Model Print using 3D
+objects using software
+Printer
+and a 3D printer.
+Interactive greeting card
+Circuit on Greetings
+with circuits.
+Card
+Programming basic
+animations, games, and
+Scratch Programming
+tables in Scratch.
+-
+
+23.
+
+Machine Vision Projects
+
+24.
+
+UAV equipped with high
+resolution cameras and
+advanced image processing
+algorithms to detect smoke
+Fire Monitoring System
+and fire features based on
+color segmentation, texture
+analysis, and pattern
+recognition.
+
+Raspberry Pi, sensors,
+peripherals
+Motors, battery, brushes,
+microcontroller
+Motors, gears, Arduino
+Construction materials,
+load sensors
+3D pen, plastic filament
+
+Computer, TinkerCAD
+3D printer, PLA/ABS
+Filament
+Copper tape, LEDs, coin
+cell battery
+Scratch software,
+computer
+
+Webcam, Python Software
+
+Drone, Night-vision Camera,
+Python Software
+
+19. Additional Qualification / Achievements / Certifications
+•
+
+Completed Computer Hardware Certification, NIIT Kolkata. 2009
+
+•
+
+Best Paper Award, International Conference on Computer, Electrical & Communication
+Engineering (ICCECE 2017), IEEE Xplore.
+
+•
+
+University Fellowship, Techno India University, West Bengal, 2015-17.
+
+•
+
+Ranked 3rd in M. Tech batch (2015–2017) and 2nd in the ECE Department.
+
+•
+
+Reviewed research papers for IEEE Xplore and JSEHM journals.
+3
+
+•
+
+Editorial Assistant, JSEHM Journal (2018–2019).
+
+•
+
+Established Two Robotics & AI Laboratories (₹6.36 lakh and ₹18 lakh budgets, 2024–2025).
+
+•
+
+Faculty-in-Charge, Sensors & Signal Processing Laboratory and IQAC/5S/Exam Cell
+Assistance (KPRIET, 2025).
+
+•
+
+Faculty-in-Charge, EV Laboratory, Centre of Excellence, worth 5.7 Crore (KPRIET, 2026).
+
+•
+
+Attended Multiple Faculty Development Programmes (FDPs) on Emerging Technologies.
+
+•
+
+Developed an Educational Website using HTML, CSS, JavaScript, Adobe XD, Photoshop.
+
+•
+
+Designed and Implemented a Drone Prototype for an Inter-College Technical Competition.
+
+•
+
+Organized and Participated in National & International Conferences, Hackathons, and Cultural
+Events.
+
+20. Working Details
+Sl. Name of Institute /
+
+Designation /
+
+Full Time /
+
+No.
+
+Organization
+
+Department
+
+Part Time
+
+Techno India
+
+Assistant
+
+University
+
+Professor / ECE
+
+Aces Infotech
+
+Sr. Faculty &
+
+Private Limited
+
+Coordinator
+
+1
+
+2
+
+3
+
+BrightChamps
+
+KPR Institute of
+4
+
+Engineering and
+Technology
+
+Full Time
+
+Full Time
+
+Robotics &
+
+Full Time
+
+AI-ML Trainer
+
+From
+
+To
+
+Duration
+
+08 Jul
+
+27 Dec
+
+2017
+
+2023
+
+05 Jan
+
+03 May
+
+2024
+
+2025
+
+06 Jun
+
+08 Jul
+
+01 Month
+
+2025
+
+2025
+
+02 Days
+
+Present
+
+-
+
+06 Years
+05 Months
+19 Days
+01 Year
+03 Months
+28 Days
+
+Assistant
+Professor III /
+
+Full Time
+
+Mechatronics
+
+12 Jul
+2025
+
+Engineering
+
+21. Subjects Taught
+A. Techno India University (Electronics and Communication Engineering Department)
+1.
+
+Advanced Digital Signal Processing
+
+Theory & Lab
+
+M. Tech I Year
+
+2.
+
+Satellite Communication
+
+Theory & Lab
+
+B. Tech IV Year
+
+3.
+
+Analog Communication
+
+Theory & Lab
+
+B. Tech III Year
+
+4.
+
+Circuit Theory
+
+Theory & Lab
+
+B. Tech II Year
+
+5.
+
+Basic Electronics
+
+Theory & Lab
+
+B. Tech I Year
+
+6.
+
+Instrumentation and Control
+
+Theory & Lab
+
+Diploma III Year
+
+4
+
+7.
+
+Communication Engineering
+
+Theory & Lab
+
+Diploma III Year
+
+B. Aces Infotech Pvt. Ltd.
+Role
+
+Key Responsibilities
+• Teaching courses on Introduction to Robotics and AI–ML, including theory
+and practical lab sessions.
+Sr. Faculty
+• Designing and delivering Industrial Training Programs on emerging
+technologies for university students and government/private professionals.
+• Hiring, training, and evaluating subject teachers.
+• Developing, reviewing, and improving course curricula, academic systems,
+Coordinator
+and procedures.
+• Planning, organizing, and delivering workshops, seminars, and academic/
+technical events.
+C. BrightChamps
+1.
+
+Robotics & AI
+
+Theory & Hands-on Sessions International Students (USA, UK)
+
+D. KPR Institute of Engineering and Technology (Mechatronics Engineering Department)
+1.
+
+Machine Vision and Image Processing
+
+Theory
+
+B. E. IV Year
+
+2.
+
+Electric and Hybrid Vehicle
+
+Theory & Lab
+
+B. E. III Year
+
+3.
+
+Microcontroller and Embedded Systems
+
+Theory & Lab
+
+B. E. II Year
+
+4.
+
+Electronic Devices and Digital Circuits
+
+Theory & Lab
+
+B. E. II Year
+
+5.
+
+Sensors and Signal Processing
+
+Theory & Lab
+
+B. E. II Year
+
+6.
+
+Electrical and Electronics for Mechatronics
+
+Theory & Project
+
+B. E. I Year
+
+22. Journal Reviewer (3)
+•
+
+American Journal of Electrical and Computer Engineering. 2640-0502.
+
+•
+
+Physica Scripta. 1402-4896. IF. 2.6
+
+•
+
+International Journal of Innovative Research in Technology. 2349-6002. IF. 8.01
+
+Publications
+Patent (1)
+1. Exoskeleton-Assisted Physical Therapy Suit, Design Number: 6487213 (Published, UK, 2025).
+2. VR-ML Personalized Classroom Learning Desk, Application No 485146-001, (Filed, IP, 2025).
+
+In Peer Reviewed Journals (13)
+1.
+
+Banerjee, A., Sarkar, H., Raha, B., Das, S., & Bhattacharya, A. B. (2016). Studies on some
+aspects of space weather and its effects on communication systems remote sensing through
+space probes and satellites. Journal of the Indian Society of Remote Sensing, 501-509.
+(IMPACT FACTOR: 2.2)
+5
+
+2.
+
+Chakraborty, M., Banerjee, A., Sarkar, H., & Bhattacharya, A. B. (2017). Characteristic of
+integrated field intensity of atmospherics during monsoon of West Bengal. TIU Transactions on
+Intelligent Computing, 1, 17-26.
+
+3.
+
+Sarkar, H., Banerjee, A., Das, S., & Bhattacharya, A. B. (2018). Design of a coupled log
+periodic dipole array for receiving radio signal from distant sun. Journal of Science,
+Engineering, Health and Management, 1, 7-15.
+
+4.
+
+Chowdhury, G. R., Bhattacharya, A. B., Lichtman, J. M., & Sarkar, H. (2018). Reaching
+another world with a solar system having liquid water and probable life. Journal of Science,
+Engineering, Health and Management, 2, 2-7.
+
+5.
+
+Banerjee, A., Sarkar, H., Bhattacharya, A. B., & Das, G. K. (2018). Solar modulation of the
+terrestrial atmosphere and the associated climatic changes. Journal of Science, Engineering,
+Health and Management, 2, 43-50.
+
+6.
+
+Sarkar, H., Sen, P., & Bhattacharya, A. B. (2018). Emerging techniques and instruments for
+brain-computer interfacing. Journal of the Institute of Electronics and Telecommunication
+Engineers (JIETE).
+
+7.
+
+Sarkar, H., Sen, P., & Bhattacharya, A. B. (2018). Technologies for Mind Machine Interface.
+Journal of Science, Engineering, Health and Management. 2 (3). 84-94.
+
+8.
+
+Sarkar, H., Banerjee, A., Mitra, S. P., Bhattacharya, A., & Sen, P. (2019). A comparative study
+of ELF and VLF noise characteristics of nor’wester at a low latitude tropical station. SN Applied
+Sciences, 1, 154. Springer. https://doi.org/10.1007/s42452-018-0028-4 (IMPACT FACTOR:
+2.88)
+
+9.
+
+Mitra, S. P., Sarkar, H., Sen, P., & Bhattacharya, A. B. (2019). Implementation of system II
+transit point data for investigating the reduction of the rotational speed of the planet Jupiter. SN
+Applied Sciences, 1, 115. Springer. https://doi.org/10.1007/s42452-018-0017-7 (IMPACT
+FACTOR: 2.88)
+
+10. Mandal, P., Sarkar, H., & Chowdhury, S. K. (2024). Designing an IoT platform using wireless
+sensor network. International Journal of Advanced Research in Science, Communication and
+Technology (IJARSCT), 4(1), 13-18. (IMPACT FACTOR: 7.53)
+11. Chowdhury, S. K., & Sarkar, H. (2025). Neuroimaging and analyzing brain matrices. Journal
+of Sustainable Development Innovations, ASPUR Publishing. DOI:10.61552/JSI.2025.01.001
+12. Sarkar, H., Thamilselvi, R., Hemasri P., Harinipriya S., Saha, A. (2025). Spatiotemporal
+Analysis of Severe Hailstorms Over Kolkata and Surrounding Regions for Last 24years Using
+IMD Radar Data and Machine Learning Approaches, International Journal of Research and
+Analytical Reviews, 12 (3). 596-606. (IMPACT FACTOR: 7.17)
+13. Sarkar, H., Karmakar, S., Saha, A., Chowdhury, K. S., Nyamusoro, T. (2025) Big Data–Driven
+Smart Climate Change Prediction Using a Machine Learning Framework. International Journal
+6
+
+of Innovative Research in Technology (IJIRT). 12 (6).
+14. Karmakar, S., Sarkar, H., & Chowdhury, S. K. (2025). Predictive Modelling and Big Data
+Analysis for Optimizing Android App Development. Elsevier. (Communicated)
+15. Sarkar, H., Karmakar, S., Saha, A. (2025). Predicting Climate Change Simulation with Big
+Data and Machine Learning Approach. Climate Change, Springer. (Communicated)
+16. Sarkar, H., Priyadharshini, M. (2025). A Comparative Analysis of Real-Time Algorithmic
+Performance Optimization in Systems. Journal of Propulsion Technology. (Communicated)
+17. Dutta A., Chowdhury K. S., Shadangi R. A., Saha A., Sarkar H. (2025). Quantum Computing
+Framework Optimization Challenges. Discrete Optimization. (communicated)
+18. Karmakar, S., Sarkar, H., & Chowdhury, S. K. (2025). Investigating correlation dynamics and
+predictive modeling for airline passenger referral using XGBoost and perception features.
+(communicated)
+
+In Seminar/Symposium/Conferences (18)
+1.
+
+Banerjee, A., Sarkar, H., & Bhattacharya, A. B. (2017). Studies on solar radio signal variations
+at frequencies in the VLF and VHF bands. IEEE Xplore Digital Library, 38, 1-6.
+
+2.
+
+Sarkar, H., Banerjee, A., Biswas, S., & Bhattacharya, A. B. (2018, April 21-22). Emission of
+beam of electromagnetic radiation from pulsating star. Paper presented at the National
+Conference on Progress in Bioengineering and Environmental Management.
+
+3.
+
+Sarkar, H., & Chakraborty, S. (2022). Investigations on characteristic features of cyclonic
+storm ‘MORA 2017’ through radio signal, satellite, and radar over the Bay of Bengal. In
+Proceedings of the International Conference on Industrial Instrumentation and Control (Vol.
+815, pp. 31-40). Springer.
+
+4.
+
+Das, S., Sarkar, H., & Chowdhury, S. K. (2024, April 11-12). Live pulsation gadget using
+Arduino. Paper presented at the 14th Inter-University Engineering, Science & Technology
+Academic Meet.
+
+5.
+
+Karmakar, S., Sarkar, H., & Chowdhury, S. K. (2024, October 24-25). Predicting bike sharing
+demand: Analyzing weather, time, and seasonal influences. Accepted and Presented at the
+International Conference on Advanced Innovations in Engineering, Science and Technology.
+
+6.
+
+Sarkar, H., Priyadharshini, R. (2025, September 27-28) A Comparative Analysis of Real-Time
+Algorithmic Performance Optimization in Intelligent systems. Accepted and Presented at the
+International Conference on Advances in Mathematics, Engineering & Technology.
+
+7.
+
+Sikidar, A., Thakur, B., Vidyasagar, K. E. Ch., Panwar, A. A., Sarkar, H., Pal, D., Joel, E., &
+Kumar, M. (2025, November 19-21). Comparative Analysis of Adolescent Idiopathic Scoliosis
+(AIS) and Healthy Subjects Using Electromyography (EMG) and Ground Reaction Forces
+(GRF). Accepted and Presented in International Conference on Interdisciplinary Research in
+7
+
+Technology & Management. IIT Gandhinagar Campus.
+8.
+
+Shadangi, A. R., Sarkar, H., Das, S. S., & Chakrabarti, I. (2025, December 29-30). Analyzing
+the BER of OTFS Compared to OFDM in a Multipath Fading Channel. Accepted and Presented
+in Engineering Advances 2025: Second International Conference.
+
+9.
+
+Sarkar, H., & Saha, A. (2026, January 30-31). An analysis of solar modulation of cosmic rays
+and their significance on Earth’s climate. Second International Conference on Advances in
+Energy and Environmental Engineering.
+
+10.
+
+Sidoine B. N. C., Shadangi R. A., Sarkar H. (2026, January 30-31). AI Based IoT-Enabled
+Infrared Flame Detection and Infrasound-Based Fire Suppression System. International
+Conference on Robotics, Automation & Mechanical Engineering (ICRAME 2026). Lucknow.
+
+11.
+
+Kumar, N. J., Subhhashree, T., Anandhi, S., Saha, A., & Sarkar, H. (2026, January 30-31).
+Structural analysis and Manufacturing optimization of spring mattress systems through
+computational and AI Approaches. International Conference on Robotics, Automation &
+Mechanical Engineering (ICRAME 2026). Lucknow.
+
+12.
+
+Sarkar, H., Priyadharshini, R. (2026, February 10-12) Optimization Techniques for Real-Time
+Intelligent Systems through Machine Learning Techniques. International Conference on
+Advanced Scientific Computing & Machine Learning. Bits Pilani, Goa. (Accepted and
+presented)
+
+13.
+
+Sarkar, H., Saha, A., Harini Priya, S., Hema Sri, P., Thamilselvi, R., & Niranjan, J. (2026,
+February 10-12). Technological challenges and future analysis of sustainable electric mobility
+systems using deep learning algorithms. International Conference on Advanced Scientific
+Computing & Machine Learning, BITS Pilani, Goa.
+
+14.
+
+Nyanzvi, T., Saha, A., Niranjan, J., Subhhashree, T., Harinipriya, S., Hemasri, P., Thamilselvi,
+R., & Sarkar H. (2026, February 17-20). Real-time Forest fire monitoring with UAV and image
+processing techniques, International Workshop and Conference on Robotics, Automation, and
+Manufacturing (RAM'26), Thailand
+
+15.
+
+Navasakthi, S., Sangavi, K., Kanimozhi, R., Roshini, J., Saha, A., & Sarkar, H. (2026,
+February 20-22). Machine-learning-driven soil moisture monitoring for precision agriculture
+applications. International Conference on Mathematical Sciences and Computational
+Intelligence (ICMSCI-2026).
+
+16.
+
+Mitra, V. L., Nilanthini, B., Kirubhavathi, V., Janani, S., Thanika Sree, S., & Sarkar, H. (2026,
+February 20-22). An adaptive fuzzy-logic-based multi-sensor decision system using Arduino
+for low-cost fire and gas detection. International Conference on Mathematical Sciences and
+Computational Intelligence (ICMSCI-2026).
+
+17.
+
+Harinipriya, S., Hemasri, P., Thamilselvi, R., Saha, A., & Sarkar, H. (2026, February 20-22).
+Advances and challenges in BCI-controlled wearable exosuits for paralysis rehabilitation.
+8
+
+International Conference on Mathematical Sciences and Computational Intelligence (ICMSCI2026).
+18.
+
+Jagadeesh N, Sarkar H., Design of a Touchless Hand-Gesture Controlled Augmented Reality
+System Using Computer Vision. International Conference on Smart Mobility for Sustainable
+Future"-ICSMSF2026.
+
+19.
+
+Hema Sri P, Harini Priya S, Saha A., Shadangi R. A., Sarkar, H, (2026, May 15-17) Advances
+in Nanobiotechnology: From Nanoparticle Engineering to Biomedical Applications.
+2nd International Conference on Advances in Sustainable Research for Energy and
+Environmental Management (ASREEM 2.0). (Accepted for Presentation).
+
+20.
+
+Jagadeesh Kumar, N., Subhhashree, T., Consty Sidoine, B. N., Devipriya, M., Saha, A.,
+Shadangi, A. R., & Sarkar, H. (2026, April 27-29). Design and implementation of a low-power
+edge-based offline speech command system for smart appliance control. International
+Conference on Electrical and Electronics Engineering (Submitted)
+
+Monograph (1)
+Bhattacharya, A., Banerjee, A., & Sarkar, H. (2018). Today’s biggest cosmic mysteries. LAP
+Lambert Academic Publishing. Germany. ISBN 9786202058834
+
+Books (2)
+1.
+
+Sarkar, H. (2024). Beginner’s guide to electronics and robotics. LAP Lambert Academic
+Publishing. Germany. ISBN 9786207808847
+
+2.
+
+Sarkar, H., Chowdhury, S. K., & Karmakar, S. (2024). NeuroLink: Brain-computer
+interaction. LAP Lambert Academic Publishing. Germany. ISBN 9786208170363
+
+Book Chapters (2)
+1.
+
+Karmakar, S., Sarkar, H., & Chowdhury, S. K. (2025). Predicting bike sharing demand:
+analyzing weather, time, and seasonal influences. Recent Trends in Engineering, Science and
+Technology. Taylor and Francis. CRC Press. USA. ISBN 9781041121633.
+
+2.
+
+Karmakar, S., Sarkar, H., Chowdhury, S. K., Vij, R., (2026). Innovative approaches to cloudbased standardization and advanced techniques for next-gen online evaluation. Transforming
+Education with Singularity Technologies. Lifelong Learning from Childhood to Adulthood.
+Taylor and Francis. CRC Press. USA. ISBN 9781032953250.
+
+3.
+
+Sarkar, H., & Chowdhury, S. K. (2025). Future-driven material handling systems: LLMs and
+BCIs for optimized operational intelligence and adaptive control. In IEEE (Abstract Accepted,
+Chapter Submitted).
+
+4.
+
+Sarkar, H., Shadangi, A. R., Pal, D., Sikidar, A., Panwar, A. A., & Karmakar, S. (2025).
+9
+
+EcoSenseAI: Real-Time Pollution Data Visualization through AI and Big Data Intelligence.
+Wiley Publication. UK. (Abstract Accepted, Chapter Submitted).
+
+Hirak Sarkar
+
+10
+
+
