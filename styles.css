@@ -358,7 +358,7 @@ a:hover {
 .scroll-indicator {
   position: absolute;
   bottom: 3.5rem;
-  right: 1.5rem;
+  right: 0.5rem;
   font-family: var(--mono);
   font-size: 0.6rem;
   font-weight: 500;
@@ -476,6 +476,11 @@ section {
 
 .about-text+.about-text {
   margin-bottom: 2rem;
+}
+
+.about-text strong {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* Stats Grid — elevated micro-cards */
@@ -1458,8 +1463,8 @@ section {
 /* ===== HERO SEARCH BUTTON ===== */
 .hero-search-btn {
   position: absolute;
-  top: 1.8rem;
-  right: 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
   z-index: 10;
   background: var(--bg-card);
   border: 1px solid var(--rule);
@@ -1476,7 +1481,6 @@ section {
 .hero-search-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
-  transform: translateY(-1px);
 }
 
 .hero-search-btn svg {
