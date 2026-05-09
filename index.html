@@ -143,14 +143,26 @@
     <!-- ===== ABOUT — Chip-style key-values ===== -->
     <section id="about">
       <div class="section-label">About</div>
-      <p class="about-text">PhD in Electronics and Communication Engineering with <strong>7+ years</strong> of academic
-        experience and over 1 year in the automation industry. Currently associated with the Mechatronics Engineering
-        Department. Published <strong>19+ papers in SCI/Scopus-indexed journals</strong> and international conferences,
-        with multiple books and book chapters in reputed international publishers. Skilled in interdisciplinary
-        research, innovation, and mentoring, with a strong focus on bridging advanced technology and real-world
-        applications.</p>
+      <div class="about-content-wrapper" style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+        <img src="image.png" alt="Dr. Hirak Sarkar" style="width: 240px; border-radius: 12px; object-fit: cover; flex-shrink: 0; filter: grayscale(20%);" />
+        <div class="about-text-content" style="flex: 1; min-width: 300px;">
+          <p class="about-text">PhD in Electronics and Communication Engineering with <strong>8+ years</strong> of academic
+            experience and over 1 year in the automation industry. Currently associated with the Mechatronics Engineering
+            Department. Published <strong>19+ papers in SCI/Scopus-indexed journals</strong> and international conferences,
+            with multiple books and book chapters in reputed international publishers. Skilled in interdisciplinary
+            research, innovation, and mentoring, with a strong focus on bridging advanced technology and real-world
+            applications.</p>
+          
+          <div id="extendedBio" style="display: none; margin-top: 1.5rem;">
+            <p class="about-text" style="margin-bottom: 1rem;">Dr. Hirak Sarkar is an eminent educator, researcher, and innovator working in the field of Electronics, Mechatronics, and emerging technologies. He holds a Ph.D. in Electronics and Communication Engineering and has over 8+ years of academic experience along with more than 1 year of experience in the automation industry. With a strong academic background and industry exposure, he brings a balanced approach to both teaching and practical problem-solving. He is currently associated with the Department of Mechatronics Engineering, where he actively contributes to student learning, research development, and advanced laboratory initiatives.</p>
+            <p class="about-text">Dr. Sarkar is known for his dedication to innovation, mentoring students, and encouraging hands-on learning. His work focuses on areas such as solar radio astronomy, robotics, artificial intelligence, embedded systems, and human–computer interaction. He has contributed widely to research through publications, books, and collaborations with reputed international platforms. His interest lies in connecting advanced technology with real-world applications that can create meaningful impact.</p>
+          </div>
+          
+          <button class="read-more-btn" onclick="const b = document.getElementById('extendedBio'); const t = this; if(b.style.display==='none'){b.style.display='block'; t.textContent='Read less';}else{b.style.display='none'; t.textContent='Read more';}" style="margin-top: 1rem; padding: 0.6rem 1.2rem; border: 1px solid var(--border, #444); background: transparent; color: inherit; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 0.9rem; transition: all 0.2s;">Read more</button>
+        </div>
+      </div>
 
-      <div class="stats-grid">
+      <div class="stats-grid" style="margin-top: 3rem;">
         <div class="stat-item">
           <div class="stat-num">20<span class="plus">+</span></div>
           <div class="stat-label">Publications</div>
@@ -425,7 +437,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© Dr. Hirak Sarkar 2025 <a href="https://lbxsuite.com" target="_blank">[powered by
+      <div class="footer-copy">© Dr. Hirak Sarkar 2026 <a href="https://lbxsuite.com" target="_blank">[powered by
           lbxsuite]</a></div>
     </div>
   </footer>
