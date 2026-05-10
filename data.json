@@ -1,0 +1,41 @@
+{
+  "about": {
+    "experienceYears": "8+ years",
+    "shortBio": "Dr. Hirak Sarkar is an eminent educator, researcher, and innovator working in the field of Electronics, Mechatronics, and emerging technologies. He holds a Ph.D. in Electronics and Communication Engineering.",
+    "extendedBio1": "He has over 8 years of academic experience along with more than 1 year of experience in the automation industry. With a strong academic background and industry exposure, he brings a balanced approach to both teaching and practical problem-solving.",
+    "extendedBio2": "He is currently associated with the Department of Mechatronics Engineering, where he actively contributes to student learning, research development, and advanced laboratory initiatives."
+  },
+  "stats": [
+    { "num": "10+", "label": "Publications in Web of Science/Scopus/UGC CARE" },
+    { "num": "3+", "label": "Patents Filed/Published" },
+    { "num": "30+", "label": "Workshops, Seminars, & FDPs Completed" },
+    { "num": "1+", "label": "Years Industry Experience in Automation" },
+    { "num": "8+", "label": "Years Academic Experience" }
+  ],
+  "projects": [
+    {
+      "id": "01",
+      "name": "Fire Monitoring UAV",
+      "desc": "Autonomous drone for real-time forest fire detection using night-vision and computer vision",
+      "tags": ["Drone", "Night-vision", "Python"]
+    },
+    {
+      "id": "02",
+      "name": "Autonomous Robotic Arm",
+      "desc": "Multi-DOF robotic manipulator with wireless control and automated pick-and-place",
+      "tags": ["Servo", "Arduino", "ESP32"]
+    },
+    {
+      "id": "03",
+      "name": "Radar Simulation System",
+      "desc": "Ultrasonic-based radar simulator with real-time distance mapping and sweep display",
+      "tags": ["Ultrasonic", "Servo", "Arduino"]
+    },
+    {
+      "id": "04",
+      "name": "Machine Vision Suite",
+      "desc": "Object detection, tracking, and image classification pipelines",
+      "tags": ["Webcam", "OpenCV", "Python"]
+    }
+  ]
+}

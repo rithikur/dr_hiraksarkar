@@ -1,0 +1,12 @@
+{
+  "name": "dr_hiraksarkar",
+  "version": "1.0.0",
+  "description": "Academic Portfolio",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
