@@ -837,4 +837,148 @@ document.addEventListener('DOMContentLoaded', () => {
             history.replaceState(null, '', window.location.pathname + (cleanHash.startsWith('&') ? '#' + cleanHash.slice(1) : cleanHash));
         }, 500); // Wait for page to fully render
     }
+    // --- DATA.JSON LOADER ---
+    const isSubPagePath = window.location.pathname.includes('/pages/');
+    const dataPath = isSubPagePath ? '../data.json' : 'data.json';
+
+    fetch(dataPath)
+        .then(res => res.json())
+        .then(data => {
+            // 1. Update About Section (index.html)
+            const aboutContainer = document.querySelector('.about-text-content');
+            if (aboutContainer && data.about) {
+                const shortBioP = aboutContainer.querySelector('p.about-text:first-child');
+                if (shortBioP) {
+                    // Injecting bold experience years automatically if present
+                    let shortText = data.about.shortBio || '';
+                    if (data.about.experienceYears) {
+                        shortText = shortText.replace(data.about.experienceYears, `<strong>${data.about.experienceYears}</strong>`);
+                    }
+                    shortBioP.innerHTML = shortText;
+                }
+                
+                const extBioDiv = document.getElementById('extendedBio');
+                if (extBioDiv) {
+                    extBioDiv.innerHTML = `
+                        <p class="about-text" style="margin-bottom: 1rem;">${data.about.extendedBio1 || ''}</p>
+                        <p class="about-text">${data.about.extendedBio2 || ''}</p>
+                    `;
+                }
+            }
+
+            // 2. Update Stats (index.html)
+            const statsGrid = document.querySelector('.stats-grid');
+            if (statsGrid && data.stats) {
+                statsGrid.innerHTML = data.stats.map(stat => {
+                    const numPart = stat.num.replace(/[^0-9.]/g, '');
+                    const plusPart = stat.num.replace(/[0-9.]/g, '');
+                    return `
+                    <div class="stat-item">
+                        <div class="stat-num">${numPart}<span class="plus">${plusPart}</span></div>
+                        <div class="stat-label">${stat.label}</div>
+                    </div>`;
+                }).join('');
+            }
+
+            // 3. Update Projects (index.html / projects.html)
+            const projGrid = document.querySelector('.proj-grid, .proj-list');
+            if (projGrid && data.projects) {
+                // If on index, only show max 4 projects. If on projects.html, show all.
+                const isProjectsPage = window.location.pathname.includes('projects.html');
+                const projectsToShow = isProjectsPage ? data.projects : data.projects.slice(0, 4);
+                
+                projGrid.innerHTML = projectsToShow.map(proj => {
+                    const tagsHtml = (proj.tags || []).map(t => `<span class="proj-tag">${t}</span>`).join('');
+                    
+                    if (isProjectsPage) {
+                        // projects.html format
+                        return `
+                        <div class="proj-entry">
+                            <div class="proj-header">
+                                <div class="proj-id">${proj.id}</div>
+                                <div class="proj-name">${proj.name}</div>
+                            </div>
+                            <div class="proj-body">
+                                <div class="proj-desc">${proj.desc}</div>
+                                <div class="proj-tags">${tagsHtml}</div>
+                            </div>
+                        </div>`;
+                    } else {
+                        // index.html format
+                        return `
+                        <div class="proj-card">
+                            <div class="proj-id">${proj.id}</div>
+                            <div class="proj-name">${proj.name}</div>
+                            <div class="proj-desc">${proj.desc}</div>
+                            <div class="proj-tags">${tagsHtml}</div>
+                        </div>`;
+                    }
+                }).join('');
+            }
+
+            // 4. Update Publications (publications.html)
+            // Replace static entries while keeping the headings intact
+            const pubsSection = document.getElementById('publications');
+            if (pubsSection && data.publications) {
+                // We find the container that holds the entries. Currently they are siblings to section-title
+                // Let's create a wrapper or just replace them.
+                const container = pubsSection.querySelector('.section-content') || pubsSection;
+                // Remove existing pub-entries
+                container.querySelectorAll('.pub-entry').forEach(el => el.remove());
+                
+                const pubsHtml = data.publications.map(pub => {
+                    const titleHtml = pub.link 
+                        ? `<a href="${pub.link}" target="_blank" rel="noopener">${pub.title}</a>`
+                        : pub.title;
+                    const ifHtml = pub.impactFactor ? `<span class="pub-if">${pub.impactFactor}</span>` : '';
+                    
+                    return `
+                    <div class="pub-entry">
+                        <div class="pub-year">${pub.year}</div>
+                        <div class="pub-body">
+                            <div class="pub-title">${titleHtml}</div>
+                            <div class="pub-venue">${pub.venue} ${ifHtml}</div>
+                        </div>
+                    </div>`;
+                }).join('');
+                
+                // Append right after the title or at the end
+                const titleEl = container.querySelector('.section-title');
+                if (titleEl) {
+                    titleEl.insertAdjacentHTML('afterend', pubsHtml);
+                } else {
+                    container.innerHTML = pubsHtml; // fallback
+                }
+            }
+
+            // 5. Update Teaching (teaching.html)
+            const teachingSection = document.querySelector('.teaching-wrapper');
+            if (teachingSection && data.teaching) {
+                teachingSection.querySelectorAll('.teach-group').forEach(el => el.remove());
+                
+                const teachingHtml = data.teaching.map(org => {
+                    const coursesHtml = (org.courses || []).map(c => `
+                        <div class="teach-card">
+                            <div class="teach-course">${c.course}</div>
+                            <div class="teach-level">${c.level}</div>
+                        </div>
+                    `).join('');
+                    
+                    return `
+                    <div class="teach-group">
+                        <div class="teach-org">
+                            <div class="teach-org-name">${org.org}</div>
+                            <div class="teach-org-duration">${org.duration}</div>
+                        </div>
+                        <div class="teach-grid">
+                            ${coursesHtml}
+                        </div>
+                    </div>`;
+                }).join('');
+                
+                teachingSection.insertAdjacentHTML('beforeend', teachingHtml);
+            }
+        })
+        .catch(err => console.error('Failed to load CMS data:', err));
+
 });
