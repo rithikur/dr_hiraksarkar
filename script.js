@@ -888,45 +888,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 const projectsToShow = isProjectsPage ? data.projects : data.projects.slice(0, 4);
                 
                 projGrid.innerHTML = projectsToShow.map(proj => {
-                    const tagsHtml = (proj.tags || []).map(t => `<span class="proj-tag">${t}</span>`).join('');
-                    
                     if (isProjectsPage) {
                         // projects.html format
+                        const stackHtml = (proj.tags || []).join(' · ');
                         return `
                         <div class="proj-entry">
-                            <div class="proj-header">
-                                <div class="proj-id">${proj.id}</div>
+                            <div class="proj-entry-num">${proj.id}</div>
+                            <div class="proj-entry-body">
                                 <div class="proj-name">${proj.name}</div>
-                            </div>
-                            <div class="proj-body">
                                 <div class="proj-desc">${proj.desc}</div>
-                                <div class="proj-tags">${tagsHtml}</div>
                             </div>
+                            <div class="proj-entry-stack">${stackHtml}</div>
                         </div>`;
                     } else {
                         // index.html format
+                        const tagsHtml = (proj.tags || []).map(t => `<span class="proj-stack-tag">${t}</span>`).join('');
                         return `
                         <div class="proj-card">
-                            <div class="proj-id">${proj.id}</div>
+                            <div class="proj-num">${proj.id}</div>
                             <div class="proj-name">${proj.name}</div>
                             <div class="proj-desc">${proj.desc}</div>
-                            <div class="proj-tags">${tagsHtml}</div>
+                            <div class="proj-stack">${tagsHtml}</div>
                         </div>`;
                     }
                 }).join('');
             }
 
-            // 4. Update Publications (publications.html)
-            // Replace static entries while keeping the headings intact
+            // 4. Update Publications (publications.html & index.html)
             const pubsSection = document.getElementById('publications');
             if (pubsSection && data.publications) {
-                // We find the container that holds the entries. Currently they are siblings to section-title
-                // Let's create a wrapper or just replace them.
-                const container = pubsSection.querySelector('.section-content') || pubsSection;
-                // Remove existing pub-entries
-                container.querySelectorAll('.pub-entry').forEach(el => el.remove());
+                const isPubsPage = window.location.pathname.includes('publications.html');
+                const pubsToShow = isPubsPage ? data.publications : data.publications.slice(0, 4);
                 
-                const pubsHtml = data.publications.map(pub => {
+                // Remove existing pub-entries safely
+                pubsSection.querySelectorAll('.pub-entry').forEach(el => el.remove());
+                
+                const pubsHtml = pubsToShow.map(pub => {
                     const titleHtml = pub.link 
                         ? `<a href="${pub.link}" target="_blank" rel="noopener">${pub.title}</a>`
                         : pub.title;
@@ -942,12 +939,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>`;
                 }).join('');
                 
-                // Append right after the title or at the end
-                const titleEl = container.querySelector('.section-title');
-                if (titleEl) {
-                    titleEl.insertAdjacentHTML('afterend', pubsHtml);
+                // Insert after section-label if it exists, else beginning
+                const labelEl = pubsSection.querySelector('.section-label');
+                if (labelEl) {
+                    labelEl.insertAdjacentHTML('afterend', pubsHtml);
                 } else {
-                    container.innerHTML = pubsHtml; // fallback
+                    // For publications.html, we might just insert at the end of the container
+                    const container = pubsSection.querySelector('.section-content') || pubsSection;
+                    // Put it before the first element if any, or just innerHTML if empty
+                    container.insertAdjacentHTML('afterbegin', pubsHtml);
                 }
             }
 
