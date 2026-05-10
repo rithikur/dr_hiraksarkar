@@ -76,5 +76,5 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`\nLocal CMS Server running!`);
   console.log(`Open http://localhost:${PORT} to view website`);
-  console.log(`Open http://localhost:${PORT}/admin.html to access Admin Panel\n`);
+  console.log(`Open http://localhost:${PORT}/admin to access Admin Panel\n`);
 });
