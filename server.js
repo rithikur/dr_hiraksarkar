@@ -51,8 +51,8 @@ const server = http.createServer((req, res) => {
   // Strip query parameters
   filePath = filePath.split('?')[0];
   
-  // Handle cached 301 redirects from the previous npx serve
-  if (filePath === './admin') filePath = './admin.html';
+  // Handle clean URLs for Admin
+  if (filePath === './admin' || filePath === './admin/') filePath = './admin/index.html';
 
   const extname = String(path.extname(filePath)).toLowerCase();
   const contentType = mimeTypes[extname] || 'application/octet-stream';
