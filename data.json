@@ -1,41 +1,136 @@
 {
+  "hero": {
+    "title": "Dr. Hirak Sarkar",
+    "role": "Assistant Professor III",
+    "dept": "Mechatronics Engineering",
+    "links": [
+      { "label": "Google Scholar", "url": "https://scholar.google.co.in/citations?user=tNKR2h4AAAAJ&hl=en" },
+      { "label": "ResearchGate", "url": "https://www.researchgate.net/profile/Hirak-Sarkar-5" },
+      { "label": "ORCID", "url": "https://orcid.org/0000-0002-4444-2818" },
+      { "label": "Email", "url": "mailto:dr.hiraksarkar@gmail.com" }
+    ],
+    "marquee": ["Space Weather", "Solar Flares", "Magnetohydrodynamics", "Robotics", "BCI", "Machine Learning", "IoT", "Embedded Systems", "RF Propagation", "Remote Sensing", "UAV Systems", "Climate Prediction", "Signal Processing", "Satellite Communication", "Deep Learning"]
+  },
   "about": {
     "experienceYears": "8+ years",
     "shortBio": "Dr. Hirak Sarkar is an eminent educator, researcher, and innovator working in the field of Electronics, Mechatronics, and emerging technologies. He holds a Ph.D. in Electronics and Communication Engineering.",
     "extendedBio1": "He has over 8 years of academic experience along with more than 1 year of experience in the automation industry. With a strong academic background and industry exposure, he brings a balanced approach to both teaching and practical problem-solving.",
-    "extendedBio2": "He is currently associated with the Department of Mechatronics Engineering, where he actively contributes to student learning, research development, and advanced laboratory initiatives."
+    "extendedBio2": "He is currently associated with the Department of Mechatronics Engineering, where he actively contributes to student learning, research development, and advanced laboratory initiatives.",
+    "image": "image.png"
+  },
+  "subtitles": {
+    "projects": "15 projects across robotics, AI, embedded systems, and mechatronics",
+    "publications": "10 Journals · 10 Conferences · 2 Patents · 2 Books · 1 Monograph · 2 Book Chapters",
+    "teaching": "8+ years across 3 institutions — 13 courses at UG and PG level"
   },
   "stats": [
-    { "num": "10+", "label": "Publications in Web of Science/Scopus/UGC CARE" },
-    { "num": "3+", "label": "Patents Filed/Published" },
-    { "num": "30+", "label": "Workshops, Seminars, & FDPs Completed" },
-    { "num": "1+", "label": "Years Industry Experience in Automation" },
-    { "num": "8+", "label": "Years Academic Experience" }
+    { "num": "20+", "label": "Publications" },
+    { "num": "7+", "label": "Patents & Books" },
+    { "num": "15+", "label": "Projects Built" },
+    { "num": "9+", "label": "Years Research" }
   ],
   "projects": [
+    { "id": "01", "name": "Fire Monitoring UAV", "desc": "Autonomous drone for real-time forest fire detection using night-vision and computer vision", "tags": ["Drone", "Night-vision", "Python"] },
+    { "id": "02", "name": "Autonomous Robotic Arm", "desc": "Multi-DOF robotic manipulator with wireless control and automated pick-and-place", "tags": ["Servo", "Arduino", "ESP32"] },
+    { "id": "03", "name": "Radar Simulation System", "desc": "Ultrasonic-based radar simulator with real-time distance mapping and sweep display", "tags": ["Ultrasonic", "Servo", "Arduino"] },
+    { "id": "04", "name": "Smart Auto Cleaner Bot", "desc": "Floor-cleaning robot with obstacle avoidance and systematic area-coverage", "tags": ["Motors", "Battery", "MCU"] },
+    { "id": "05", "name": "Machine Vision Suite", "desc": "Object detection, tracking, and image classification pipelines", "tags": ["Webcam", "OpenCV", "Python"] },
+    { "id": "06", "name": "AI Chatbot", "desc": "NLP chatbot with contextual understanding and multi-turn conversation", "tags": ["Python", "NLP"] },
+    { "id": "07", "name": "Solar Powered Bot", "desc": "Energy-autonomous robot powered entirely by solar panels", "tags": ["Solar Panel", "Motor Driver", "Arduino"] },
+    { "id": "08", "name": "Mechatronics Robot Collection", "desc": "Portfolio of 20+ mechatronics robots for education and industrial prototyping", "tags": ["20 units"] },
+    { "id": "09", "name": "3D Design & Printing Pipeline", "desc": "End-to-end CAD and additive manufacturing for rapid prototyping", "tags": ["TinkerCAD", "3D Printer", "PLA/ABS"] },
+    { "id": "10", "name": "Raspberry Pi Projects", "desc": "Embedded computing — home automation, sensor networks, edge AI", "tags": ["Raspberry Pi"] },
+    { "id": "11", "name": "Obstacle Avoidance Robot", "desc": "Autonomous navigation with ultrasonic sensors and path planning", "tags": ["Ultrasonic", "Arduino"] },
+    { "id": "12", "name": "Line Following Robot", "desc": "Precision line-tracking with PID control for smooth trajectory", "tags": ["IR Sensors", "Arduino"] },
+    { "id": "13", "name": "Smart Dustbin", "desc": "Automated waste bin with proximity-triggered lid and fill-level sensing", "tags": ["Ultrasonic", "Servo", "Arduino"] },
+    { "id": "14", "name": "Traffic Light Controller", "desc": "Programmable traffic signal system with timing logic and pedestrian mode", "tags": ["LEDs", "Arduino", "Relay"] },
+    { "id": "15", "name": "Scratch Programming Environment", "desc": "Visual programming curriculum for introductory robotics and computational thinking", "tags": ["Scratch", "Sensors"] }
+  ],
+  "publications": [
+    { "year": "2025", "title": "Spatiotemporal Analysis of Severe Hailstorms Over Kolkata Using IMD Radar Data and ML Approaches", "venue": "IJRAR 12(3), 596–606", "link": "https://drive.google.com/file/d/1Y-pKpJccu0PtoTm6Yc5OSXSP1lwZcapu/view?usp=sharing", "impactFactor": "IF 7.17", "type": "journal" },
+    { "year": "2025", "title": "Big Data-Driven Smart Climate Change Prediction Using ML Framework", "venue": "IJIRT 12(6)", "link": "https://drive.google.com/file/d/1PjmYfqtbEr1hGIwN1XzkPuazMgRgTCY-/view?usp=sharing", "impactFactor": "IF 8.01", "type": "journal" },
+    { "year": "2025", "title": "Neuroimaging and Analyzing Brain Matrices", "venue": "Journal of Sustainable Dev. Innovations, DOI:10.61552/JSI.2025.01.001", "link": "https://jsi.aspur.rs/archive/v2/n1/index.php", "type": "journal" },
+    { "year": "2024", "title": "Designing an IoT Platform Using Wireless Sensor Network", "venue": "IJARSCT 4(1), 13–18", "impactFactor": "IF 7.53", "type": "journal" },
+    { "year": "2019", "title": "Comparative Study of ELF and VLF Noise Characteristics of Nor'wester", "venue": "SN Applied Sciences, Springer", "link": "https://link.springer.com/article/10.1007/s42452-018-0158-9", "impactFactor": "IF 2.88", "type": "journal" },
+    { "year": "2019", "title": "System II Transit Point Data for Jupiter's Rotational Speed Reduction", "venue": "SN Applied Sciences, Springer", "link": "https://link.springer.com/article/10.1007/s42452-018-0105-9", "impactFactor": "IF 2.88", "type": "journal" },
+    { "year": "2018", "title": "Emerging Techniques and Instruments for Brain-Computer Interfacing", "venue": "JIETE", "type": "journal" },
+    { "year": "2018", "title": "Technologies for Mind Machine Interface", "venue": "JSEHM 2(3), 84–94", "link": "https://www.researchgate.net/profile/Hirak-Sarkar-5/publication/329468663_Technologies_for_Mind_-_Machine_Interface/links/5c16a35a4585157ac1c7b4fd/Technologies-for-Mind-Machine-Interface.pdf", "type": "journal" },
+    { "year": "2018", "title": "Coupled Log Periodic Dipole Array for Receiving Solar Radio Signal", "venue": "JSEHM 1, 7–15", "type": "journal" },
+    { "year": "2016", "title": "Space Weather and Its Effects on Communication Systems via Remote Sensing", "venue": "JISRS, 501–509", "impactFactor": "IF 2.2", "type": "journal" },
+    { "year": "2026", "title": "Solar Modulation of Cosmic Rays and Significance on Earth's Climate", "venue": "2nd Intl Conf Advances in Energy & Environmental Engg", "link": "https://drive.google.com/file/d/1ExA2DtQ1REsSb9C4zL8wpRXp0ShMo99r/view?usp=drive_link", "type": "conference" },
+    { "year": "2026", "title": "Optimization Techniques for Real-Time Intelligent Systems via ML", "venue": "ICASCML, BITS Pilani Goa", "link": "https://drive.google.com/file/d/1GAtJldYq0qA2wMZ3R-JJE5iJ7sw3Yqwk/view?usp=sharing", "type": "conference" },
+    { "year": "2026", "title": "Real-time Forest Fire Monitoring with UAV and Image Processing", "venue": "RAM'26, Thailand", "link": "https://drive.google.com/file/d/1ROASDWnGin1aUwHLj5ztV_n--ZfTs0dL/view?usp=sharing", "type": "conference" },
+    { "year": "2026", "title": "AI-Based IoT Infrared Flame Detection and Infrasound Fire Suppression", "venue": "ICRAME 2026, Lucknow", "link": "https://drive.google.com/file/d/1_sywgcBk_2rmBLOMOQQrGx0cv3_bs16z/view?usp=sharing", "type": "conference" },
+    { "year": "2026", "title": "Spring Mattress Structural Analysis via AI", "venue": "ICRAME 2026, Lucknow", "link": "https://drive.google.com/file/d/1YS_alSFnlSZAphE8rVv56io5SLnxBoY_/view?usp=sharing", "type": "conference" },
+    { "year": "2025", "title": "Comparative Analysis of AIS and Healthy Subjects Using EMG & GRF", "venue": "ICIRTM, IIT Gandhinagar", "link": "https://drive.google.com/file/d/1Lh10WUHwAqvZM-HWRfPbBBEVcecNCzwi/view?usp=sharing", "type": "conference" },
+    { "year": "2025", "title": "BER of OTFS vs OFDM in Multipath Fading Channel", "venue": "Engineering Advances 2025", "link": "https://drive.google.com/file/d/1REmeQTKCSY_3KNFYiv23Xnu1XvoOavPa/view?usp=sharing", "type": "conference" },
+    { "year": "2024", "title": "Predicting Bike Sharing Demand: Weather, Time, and Seasonal Influences", "venue": "Intl Conf AIEST", "link": "https://drive.google.com/file/d/17AjzA2lfrzVI5m6mASAuMXN8kHelRd3R/view?usp=sharing", "type": "conference" },
+    { "year": "2022", "title": "Characteristic Features of Cyclonic Storm MORA 2017 via Radio, Satellite, Radar", "venue": "Springer Vol. 815, pp. 31–40", "link": "https://link.springer.com/chapter/10.1007/978-981-16-7011-4_4", "type": "conference" },
+    { "year": "2017", "title": "Solar Radio Signal Variations in VLF and VHF Bands", "venue": "IEEE Xplore 38, 1–6", "link": "https://ieeexplore.ieee.org/document/8526203", "impactFactor": "★ Best Paper Award", "type": "conference" }
+  ],
+  "patents": [
+    { "year": "2025", "title": "Exoskeleton-Assisted Physical Therapy Suit", "venue": "UK Design Patent, Published — Design No. 6487213", "link": "https://www.registered-design.service.gov.uk/find/6487213" },
+    { "year": "2025", "title": "VR-ML Personalized Classroom Learning Desk", "venue": "India Design Patent, Filed — Application No. 485146-001", "link": "https://search.ipindia.gov.in/DesignApplicationStatus/" }
+  ],
+  "books": [
+    { "year": "2024", "title": "Beginner's Guide to Electronics and Robotics", "venue": "LAP Lambert Academic Publishing — ISBN 9786207808847", "link": "https://www.amazon.in/Beginners-Guide-Electronics-Robotics-Sarkar/dp/6207808843" },
+    { "year": "2024", "title": "NeuroLink: Brain-Computer Interaction", "venue": "LAP Lambert Academic Publishing — ISBN 9786208170363", "link": "https://www.amazon.com/NeuroLink-Brain-Computer-Interaction-Hirak-Sarkar/dp/6208170362" },
+    { "year": "2018", "title": "Today's Biggest Cosmic Mysteries", "venue": "LAP Lambert Academic Publishing — ISBN 9786202058834", "link": "https://www.amazon.in/Biggest-Mysteries-Abhijit-Banerjee-Bhattacharya/dp/6202058838", "impactFactor": "Monograph" },
+    { "year": "2025", "title": "Predicting Bike Sharing Demand", "venue": "Taylor & Francis, CRC Press — ISBN 9781041121633", "link": "https://www.taylorfrancis.com/chapters/edit/10.1201/9781003663348-45/predicting-bike-sharing-demand-analyzing-weather-time-seasonal-influences-sourav-karmakar-hirak-sarkar-sagarika-kar-chowdhury", "impactFactor": "Book Chapter" },
+    { "year": "2026", "title": "Innovative Approaches to Cloud-Based Standardization", "venue": "Taylor & Francis, CRC Press — ISBN 9781032953250", "link": "https://www.routledge.com/Transforming-Education-with-Singularity-Technologies-Lifelong-Learning-from-Childhood-to-Adulthood/Ugur/p/book/9781032953250", "impactFactor": "Book Chapter" }
+  ],
+  "experience": [
+    { "duration": "Jul 2025 – Present", "role": "Assistant Professor III", "org": "KPR Institute of Engineering and Technology" },
+    { "duration": "Jan 2024 – May 2025", "role": "Sr. Faculty & Coordinator", "org": "Aces Infotech Pvt. Ltd." },
+    { "duration": "Jun – Jul 2025", "role": "Robotics & AI-ML Trainer", "org": "BrightChamps · International" },
+    { "duration": "Jul 2017 – Dec 2023", "role": "Assistant Professor · ECE", "org": "Techno India University" }
+  ],
+  "education": [
+    { "year": "2023", "degree": "Ph.D.", "inst": "Techno India University, Kolkata", "note": "\"Some Studies for The Early Detection of Solar Flares and Cyclonic Formation\"" },
+    { "year": "2017", "degree": "M.Tech", "inst": "Electronics & Comm. Engineering, Techno India University", "note": "Grade: 9.0/10" },
+    { "year": "2015", "degree": "B.Tech", "inst": "Electronics & Comm. Engineering, MAKAUT (WBUT)" }
+  ],
+  "honors": [
+    "Best Paper Award — IEEE Xplore, ICCECE 2017",
+    "UK Design Patent No. 6487213 — Exoskeleton Suit, 2025",
+    "Established 2 Robotics & AI Labs",
+    "Faculty-in-Charge, EV Lab Centre of Excellence",
+    "University Fellowship — Techno India University",
+    "Ranked 3rd M.Tech batch · 2nd ECE Dept",
+    "Journal Reviewer — IEEE Xplore, Physica Scripta, IJIRT",
+    "Editorial Assistant — JSEHM Journal, 2018–19"
+  ],
+  "teaching": [
     {
-      "id": "01",
-      "name": "Fire Monitoring UAV",
-      "desc": "Autonomous drone for real-time forest fire detection using night-vision and computer vision",
-      "tags": ["Drone", "Night-vision", "Python"]
+      "org": "KPR Institute of Engineering and Technology",
+      "duration": "2025–Present",
+      "courses": [
+        { "course": "Machine Vision and Image Processing", "level": "B.E. IV · Theory" },
+        { "course": "Electric and Hybrid Vehicle", "level": "B.E. III · Theory & Lab" },
+        { "course": "Microcontroller and Embedded Systems", "level": "B.E. II · Theory & Lab" },
+        { "course": "Electronic Devices and Digital Circuits", "level": "B.E. II · Theory & Lab" },
+        { "course": "Sensors and Signal Processing", "level": "B.E. II · Theory & Lab" },
+        { "course": "Electrical and Electronics for Mechatronics", "level": "B.E. I · Theory & Project" }
+      ]
     },
     {
-      "id": "02",
-      "name": "Autonomous Robotic Arm",
-      "desc": "Multi-DOF robotic manipulator with wireless control and automated pick-and-place",
-      "tags": ["Servo", "Arduino", "ESP32"]
+      "org": "Techno India University",
+      "duration": "2017–2023",
+      "courses": [
+        { "course": "Advanced DSP", "level": "M.Tech I · Theory & Lab" },
+        { "course": "Satellite Communication", "level": "B.Tech IV · Theory & Lab" },
+        { "course": "Analog Communication", "level": "B.Tech III · Theory & Lab" },
+        { "course": "Circuit Theory", "level": "B.Tech II · Theory & Lab" },
+        { "course": "Basic Electronics", "level": "B.Tech I · Theory & Lab" },
+        { "course": "Communication Engineering", "level": "Diploma III · Theory & Lab" }
+      ]
     },
     {
-      "id": "03",
-      "name": "Radar Simulation System",
-      "desc": "Ultrasonic-based radar simulator with real-time distance mapping and sweep display",
-      "tags": ["Ultrasonic", "Servo", "Arduino"]
-    },
-    {
-      "id": "04",
-      "name": "Machine Vision Suite",
-      "desc": "Object detection, tracking, and image classification pipelines",
-      "tags": ["Webcam", "OpenCV", "Python"]
+      "org": "BrightChamps",
+      "duration": "2025",
+      "courses": [
+        { "course": "Robotics & AI", "level": "International · USA & UK" }
+      ]
     }
   ]
 }
