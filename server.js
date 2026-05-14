@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { exec } = require('child_process');
 
 const PORT = 3000;
 
@@ -34,6 +35,16 @@ const server = http.createServer((req, res) => {
 
         // Save to data.json
         fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(payload.data, null, 2));
+        
+        // Push changes to GitHub automatically so they reflect on the live page
+        exec('git add data.json && git commit -m "Content update via Admin panel" && git push origin main', { cwd: __dirname }, (err, stdout, stderr) => {
+          if (err) {
+            console.error('Error pushing to GitHub:', err);
+          } else {
+            console.log('Successfully pushed to GitHub:', stdout);
+          }
+        });
+
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ success: true }));
       } catch (e) {

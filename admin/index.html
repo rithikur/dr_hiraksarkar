@@ -78,7 +78,7 @@
       <h1 class="text-2xl font-bold flex items-center font-mono uppercase tracking-wider"><span class="bg-accent text-bg px-2 py-1 mr-3 text-sm">CMS</span> Content Manager</h1>
       <div class="flex gap-4">
         <button onclick="saveChanges()" class="bg-accent hover:bg-accent-bright text-white px-6 py-2 font-mono uppercase text-sm tracking-wider transition duration-200 flex items-center border border-transparent">
-          <span id="save-text">Save Database</span>
+          <span id="save-text">Save</span>
           <div id="save-loader" class="loader ease-linear rounded-full border-2 border-t-2 border-white h-4 w-4 ml-2 hidden"></div>
         </button>
         <button onclick="logout()" class="bg-bg border border-fg/20 hover:border-fg text-fg px-4 py-2 font-mono uppercase text-sm tracking-wider transition duration-200">Logout</button>
@@ -294,7 +294,7 @@
       document.getElementById('login-loader').classList.remove('hidden');
 
       try {
-        const res = await fetch('/data.json');
+        const res = await fetch('../data.json');
         if(res.ok) {
           siteData = await res.json();
           populateForms();
@@ -667,7 +667,7 @@
         } else { alert('Failed to save. Unauthorized or server error.'); }
       } catch(err) { alert('Network error while saving.'); }
       finally {
-        document.getElementById('save-text').textContent = "Save Database";
+        document.getElementById('save-text').textContent = "Save";
         document.getElementById('save-loader').classList.add('hidden');
       }
     }

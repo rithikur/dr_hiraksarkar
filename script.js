@@ -353,11 +353,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     globalSiteData[cat].forEach(e => {
                         const searchStr = `${e.role || e.degree} ${e.org || e.inst} ${e.note || ''}`.toLowerCase();
                         if (searchStr.includes(query)) {
-                            results.push({ type: cat, title: e.role || e.degree, desc: e.org || e.inst, url: isSubPage ? '../index.html#experience' : '#experience' });
+                            results.push({ type: cat, title: e.role || e.degree, desc: e.org || e.inst, url: isSubPage ? '../index.html#' + cat : '#' + cat });
                         }
                     });
                 }
             });
+
+            // Search Teaching
+            if (globalSiteData.teaching) {
+                globalSiteData.teaching.forEach(org => {
+                    const orgStr = org.org.toLowerCase();
+                    (org.courses || []).forEach(c => {
+                        if (orgStr.includes(query) || c.course.toLowerCase().includes(query) || c.level.toLowerCase().includes(query)) {
+                            results.push({ type: 'Teaching', title: c.course, desc: org.org, url: isSubPage ? 'teaching.html' : 'pages/teaching.html' });
+                        }
+                    });
+                });
+            }
 
             searchResults.innerHTML = results.slice(0, 10).map(r => `
                 <a href="${r.url}" class="search-result-item">
